@@ -56,10 +56,53 @@
         <div class="navbar-item">
           <div class="buttons">
             <b-button type="is-info" outlined>注册</b-button>
-            <b-button type="is-info" outlined>登录</b-button>
+            <div class="navbar-menu">
+              <div class="navbar-end">
+                <b-dropdown position="is-bottom-left" aria-role="menu" trap-focus>
+                  <a class="navbar-item" slot="trigger" role="button">
+                    <b-button type="is-info" outlined>登录</b-button>
+                  </a>
+
+                  <b-dropdown-item aria-role="menu-item" :focusable="false" custom paddingless>
+                    <form action>
+                      <div class="modal-card" style="width:300px;">
+                        <section class="modal-card-body">
+                          <b-field label="Email">
+                            <b-input type="email" placeholder="Your email" required></b-input>
+                          </b-field>
+
+                          <b-field label="密码">
+                            <b-input
+                              type="password"
+                              password-reveal
+                              placeholder="Your password"
+                              required
+                            ></b-input>
+                          </b-field>
+
+                          <b-checkbox>记住我</b-checkbox>
+                        </section>
+                        <footer class="modal-card-foot">
+                          <button class="button is-primary">登录</button>
+                        </footer>
+                      </div>
+                    </form>
+                  </b-dropdown-item>
+                </b-dropdown>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </nav>
 </template>
+
+<script>
+export default {
+  data() {
+    return {};
+  },
+  methods: {}
+};
+</script>

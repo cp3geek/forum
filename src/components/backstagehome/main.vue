@@ -1,5 +1,7 @@
 <template>
-  <img src="../../assets/404.png" width="550px" />
+  <div>
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>

@@ -9,6 +9,7 @@ import VueAxios from "vue-axios";
 import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
 
+
 Vue.use(Buefy);
 Vue.use(ElementUI);
 Vue.config.productionTip = false;

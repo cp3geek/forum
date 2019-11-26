@@ -18,10 +18,12 @@ const routes = [
     name: "loginbackstage",
     component: () => import("../components/backstagehome/LoginBackStage.vue")
   },
+
   {
     path: "/backstagehome",
     component: () => import("../components/backstagehome/BackStageHome.vue")
   },
+
   { path: "*", component: NotFoundComponent }
 ];
 

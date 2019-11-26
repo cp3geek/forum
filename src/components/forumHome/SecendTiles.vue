@@ -15,11 +15,16 @@
         </div>
         <div class="tile is-parent">
           <article class="tile is-child box">
-            <p class="title">放校长头像</p>
-            <p class="subtitle">With an image</p>
-            <figure class="image is-4by3">
-              <img src="https://bulma.io/images/placeholders/640x480.png" />
-            </figure>
+            <p class="title">放学校风景图</p>
+            <b-carousel>
+              <b-carousel-item v-for="(carousel, i) in carousels" :key="i">
+                <section :class="`hero is-medium is-${carousel.color}`">
+                  <div class="hero-body has-text-centered">
+                    <h1 class="title">{{carousel.text}}</h1>
+                  </div>
+                </section>
+              </b-carousel-item>
+            </b-carousel>
           </article>
         </div>
       </div>
@@ -50,7 +55,19 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      carousels: [
+        { text: "Slide 1", color: "primary" },
+        { text: "Slide 2", color: "info" },
+        { text: "Slide 3", color: "success" },
+        { text: "Slide 4", color: "warning" },
+        { text: "Slide 5", color: "danger" }
+      ]
+    };
+  }
+};
 </script>
 
 

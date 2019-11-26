@@ -42,39 +42,86 @@
 
         <div class="box">
           <article class="media">
-            <div class="media-left">
-              <figure class="image is-64x64">
-                <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image" />
-              </figure>
-            </div>
+            <figure class="media-left">
+              <p class="image is-64x64">
+                <img src="https://bulma.io/images/placeholders/128x128.png" />
+              </p>
+            </figure>
             <div class="media-content">
               <div class="content">
                 <p>
                   <strong>发帖人用户名</strong>
                   <small>@发帖人主页</small>
-                  <br />帖子标题
+                  <br />发帖标题
                 </p>
-                <button class="button is-info">查看详情</button>
               </div>
+              <nav class="level is-mobile">
+                <div class="level-left">
+                  <a class="level-item">
+                    <span class="icon is-small">
+                      <i class="fas fa-reply"></i>
+                    </span>
+                  </a>
+                  <a class="level-item">
+                    <span class="icon is-small">
+                      <i class="fas fa-retweet"></i>
+                    </span>
+                  </a>
+                  <a class="level-item">
+                    <span class="icon is-small">
+                      <i class="fas fa-heart"></i>
+                    </span>
+                  </a>
+                </div>
+              </nav>
+            </div>
+            <div class="media-right">
+              <a class="navbar-item" slot="trigger" role="button">
+                <b-button type="is-info" outlined>查看详情</b-button>
+              </a>
             </div>
           </article>
         </div>
+
         <div class="box">
           <article class="media">
-            <div class="media-left">
-              <figure class="image is-64x64">
-                <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image" />
-              </figure>
-            </div>
+            <figure class="media-left">
+              <p class="image is-64x64">
+                <img src="https://bulma.io/images/placeholders/128x128.png" />
+              </p>
+            </figure>
             <div class="media-content">
               <div class="content">
                 <p>
                   <strong>发帖人用户名</strong>
                   <small>@发帖人主页</small>
-                  <br />帖子标题
+                  <br />发帖标题
                 </p>
-                <button class="button is-info">查看详情</button>
               </div>
+              <nav class="level is-mobile">
+                <div class="level-left">
+                  <a class="level-item">
+                    <span class="icon is-small">
+                      <i class="fas fa-reply"></i>
+                    </span>
+                  </a>
+                  <a class="level-item">
+                    <span class="icon is-small">
+                      <i class="fas fa-retweet"></i>
+                    </span>
+                  </a>
+                  <a class="level-item">
+                    <span class="icon is-small">
+                      <i class="fas fa-heart"></i>
+                    </span>
+                  </a>
+                </div>
+              </nav>
+            </div>
+            <div class="media-right">
+              <a class="navbar-item" slot="trigger" role="button">
+                <b-button type="is-info" outlined>查看详情</b-button>
+              </a>
             </div>
           </article>
         </div>

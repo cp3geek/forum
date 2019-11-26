@@ -2,12 +2,12 @@
   <footer class="footer">
     <div class="content has-text-centered">
       <p>
-        <strong>Bulma</strong> by
-        <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+        <strong>此项目</strong> by
+        <a href="https://jgthms.com">Chp3</a>. The source code is licensed
         <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
         is licensed
         <a
-          href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
+          href="https://github.com/Chp3/forum"
         >CC BY NC SA 4.0</a>.
       </p>
     </div>
