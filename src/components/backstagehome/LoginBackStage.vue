@@ -34,8 +34,11 @@ export default {
       adminLogin(this.username, this.password)
         .then(res => {
           const { data } = res;
+          console.log(res);
           if (data) {
             this.$router.push("/backstagehome");
+          } else {
+            alert("服务器被吃了");
           }
         })
         .catch(err => alert(err))

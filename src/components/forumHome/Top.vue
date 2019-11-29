@@ -68,7 +68,7 @@
                       <div class="modal-card" style="width:300px;">
                         <section class="modal-card-body">
                           <b-field label="Email">
-                            <b-input type="email" placeholder="Your email" required></b-input>
+                            <b-input type="email" v-model="email" placeholder="Your email" required></b-input>
                           </b-field>
 
                           <b-field label="密码">
@@ -77,13 +77,14 @@
                               password-reveal
                               placeholder="Your password"
                               required
+                              v-model="password"
                             ></b-input>
                           </b-field>
 
                           <b-checkbox>记住我</b-checkbox>
                         </section>
                         <footer class="modal-card-foot">
-                          <button class="button is-primary">登录</button>
+                          <button class="button is-primary" @click="login">登录</button>
                         </footer>
                       </div>
                     </form>
@@ -99,10 +100,26 @@
 </template>
 
 <script>
+import { userLogin } from "@/api";
 export default {
   data() {
-    return {};
+    return {
+      email: "",
+      password: ""
+    };
   },
-  methods: {}
+  methods: {
+    login() {
+      userLogin(this.email, this.password)
+        .then(res => {
+          const { data } = res;
+          if (data) {
+            this.$router.push("/forumhome");
+          }
+        })
+        .catch(err => alert(err))
+        .finally();
+    }
+  }
 };
 </script>
