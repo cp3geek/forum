@@ -52,7 +52,7 @@
         </div>
       </div>
 
-      <div class="navbar-end">
+      <div class="navbar-end" v-if="!$store.state.isLogin">
         <div class="navbar-item">
           <div class="buttons">
             <b-button type="is-info" outlined>注册</b-button>
@@ -95,6 +95,7 @@
           </div>
         </div>
       </div>
+      <div v-else>已经登录</div>
     </div>
   </nav>
 </template>
