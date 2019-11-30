@@ -2,16 +2,16 @@
 
 
 例如父组件中
-<!-- <template>
+`<template>
     <div>
         <h2>{{counter}}</h2>
         <button @click="counter++"></button>
         <button @click="counter--"></button>
         <son :counter="counter"/> ：绑定，不能去掉，去掉之后传的是字符串，在这里传递的是变量，前面的counter是子组件的变量名，后面是父组件中传递的变量名
     </div>
-</template> -->
+</template>`
 
-<!-- <script>
+`<script>
 import son from '/son.vue'
 export default{
     components:{
@@ -23,19 +23,19 @@ export default{
         }
     }
 }
-</script> -->
+</script>`
 
 子组件中
-<!-- <template>
+`<template>
     <div>
         <h2>{{counter}}</h2>
     </div>
-</template>
+</template>`
 
-<script>
+`<script>
 export default{
     props:{
         counter:Number(传过来的值的类型)
     }
 }
-</script> -->
+</script>`
