@@ -21,6 +21,7 @@
 `mysql`
 
 后端项目地址：https://github.com/Chp3/universityforum
+userloginandregister分支做登录注册功能，预计两天做完
 
 ## Project setup
 ```
