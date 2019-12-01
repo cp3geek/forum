@@ -105,7 +105,8 @@ export default {
   data() {
     return {
       email: "",
-      password: ""
+      password: "",
+      username: "cp3"
     };
   },
   methods: {
