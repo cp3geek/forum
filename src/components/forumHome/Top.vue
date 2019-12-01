@@ -84,7 +84,7 @@
                           <b-checkbox>记住我</b-checkbox>
                         </section>
                         <footer class="modal-card-foot">
-                          <button class="button is-primary" @click="login">登录</button>
+                          <button class="button is-primary">登录</button>
                         </footer>
                       </div>
                     </form>
@@ -95,32 +95,20 @@
           </div>
         </div>
       </div>
-      <div v-else>已经登录</div>
+      <div v-else>欢迎{{username}}登录</div>
     </div>
   </nav>
 </template>
 
 <script>
-import { userLogin } from "@/api";
 export default {
   data() {
     return {
       email: "",
-      password: ""
+      password: "",
+      username: "cp3"
     };
   },
-  methods: {
-    login() {
-      userLogin(this.email, this.password)
-        .then(res => {
-          const { data } = res;
-          if (data) {
-            this.$router.push("/forumhome");
-          }
-        })
-        .catch(err => alert(err))
-        .finally();
-    }
-  }
+  methods: {}
 };
 </script>
