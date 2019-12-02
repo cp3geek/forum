@@ -77,7 +77,9 @@
             </div>
             <div class="media-right">
               <a class="navbar-item" slot="trigger" role="button">
-                <b-button type="is-info" outlined>查看详情</b-button>
+                <b-button type="is-info" outlined>
+                  <router-link to="/commenthome">查看详情</router-link>
+                </b-button>
               </a>
             </div>
           </article>

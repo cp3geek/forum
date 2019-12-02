@@ -31,6 +31,10 @@ const routes = [
     path: "/allarticlehome",
     component: () => import("../components/articlehome/Allarticlehome")
   },
+  {
+    path: "/commenthome",
+    component: () => import("../components/commenthome/CommentHome")
+  },
 
   { path: "*", component: NotFoundComponent }
 ];
