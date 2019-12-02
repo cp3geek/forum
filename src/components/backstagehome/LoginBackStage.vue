@@ -38,10 +38,10 @@ export default {
           if (data) {
             this.$router.push("/backstagehome");
           } else {
-            alert("服务器被吃了");
+            alert("你不是管理员");
           }
         })
-        .catch(err => alert(err))
+        .catch(() => alert("服务器被吃了"))
         .finally(() => (this.loading = false));
     }
   }
