@@ -28,7 +28,7 @@
           <a class="navbar-link">更多</a>
 
           <div class="navbar-dropdown">
-            <a class="navbar-item">个人主页</a>
+            <a class="navbar-item" @click="userhome">个人主页</a>
             <a class="navbar-item">全部板块</a>
             <a class="navbar-item">全部帖子</a>
             <hr class="navbar-divider" />
@@ -109,6 +109,10 @@ export default {
       username: "cp3"
     };
   },
-  methods: {}
+  methods: {
+    userhome() {
+      this.$router.push("/userhome");
+    }
+  }
 };
 </script>

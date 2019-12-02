@@ -23,6 +23,10 @@ const routes = [
     path: "/backstagehome",
     component: () => import("../components/backstagehome/BackStageHome.vue")
   },
+  {
+    path: "/userhome",
+    component: () => import("../components/userhome/UserHome")
+  },
 
   { path: "*", component: NotFoundComponent }
 ];
