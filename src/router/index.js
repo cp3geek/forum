@@ -27,6 +27,10 @@ const routes = [
     path: "/userhome",
     component: () => import("../components/userhome/UserHome")
   },
+  {
+    path: "/allarticlehome",
+    component: () => import("../components/articlehome/Allarticlehome")
+  },
 
   { path: "*", component: NotFoundComponent }
 ];

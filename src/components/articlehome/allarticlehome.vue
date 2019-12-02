@@ -1,8 +1,19 @@
 <template>
-  <div></div>
+  <div>
+    <Top />
+    <All />
+  </div>
 </template>
+
 <script>
-export default {};
+import Top from "../articlehome/Top";
+import All from "../articlehome/All";
+export default {
+  components: {
+    Top,
+    All
+  }
+};
 </script>
 
 

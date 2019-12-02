@@ -36,7 +36,7 @@
     <div class="tile is-parent is-8">
       <article class="tile is-child box">
         <p align="right">
-          <button class="button is-info">更多推荐</button>
+          <button class="button is-info" @click="all">更多推荐</button>
         </p>
         <p class="subtitle">推荐帖子</p>
 
@@ -131,7 +131,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    all() {
+      this.$router.push("/allarticlehome");
+    }
+  }
+};
 </script>
 
 <style scoped>
