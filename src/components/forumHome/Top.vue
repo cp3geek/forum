@@ -134,7 +134,7 @@ export default {
           this.user = data;
           console.log(data);
           if (data != null) {
-            this.$store.state.isLogin = true;
+            this.$store.commit("login");
           } else {
             alert("该用户不存在");
           }
