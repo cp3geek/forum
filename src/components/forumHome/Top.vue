@@ -93,7 +93,7 @@
           </div>
         </div>
       </div>
-      <div v-else>欢迎{{username}}登录</div>
+      <div v-else>欢迎{{user.userName}}登录</div>
     </div>
   </nav>
 </template>
@@ -106,7 +106,21 @@ export default {
     return {
       email: "",
       password: "",
-      username: "cp3"
+      user: {
+        userName: "",
+        userId: "",
+        userEmail: "",
+        userImg: "",
+        userPhone: "",
+        userSex: "",
+        userFans: "",
+        userTime: "",
+        userPassword: "",
+        userStatus: "",
+        userShow: "",
+        userConcern: "",
+        userBlog: ""
+      }
     };
   },
   methods: {
@@ -117,7 +131,9 @@ export default {
       userLogin(this.email, this.password)
         .then(res => {
           const { data } = res;
-          if (data) {
+          this.user = data;
+          console.log(data);
+          if (data != null) {
             this.$store.state.isLogin = true;
           } else {
             alert("该用户不存在");
