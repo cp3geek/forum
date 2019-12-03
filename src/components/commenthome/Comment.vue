@@ -10,7 +10,7 @@
         <div class="content">
           <p>
             <strong>Barbara Middleton</strong>
-            <br />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis porta eros lacus, nec ultricies elit blandit non. Suspendisse pellentesque mauris sit amet dolor blandit rutrum. Nunc in tempus turpis.
+            <br />发表了评论
             <br />
             <small>
               <a>Like</a> ·

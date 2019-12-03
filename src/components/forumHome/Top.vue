@@ -64,30 +64,28 @@
                   </a>
 
                   <b-dropdown-item aria-role="menu-item" :focusable="false" custom paddingless>
-                    <form action>
-                      <div class="modal-card" style="width:300px;">
-                        <section class="modal-card-body">
-                          <b-field label="Email">
-                            <b-input type="email" v-model="email" placeholder="Your email" required></b-input>
-                          </b-field>
+                    <div class="modal-card" style="width:300px;">
+                      <section class="modal-card-body">
+                        <b-field label="Email">
+                          <b-input type="email" v-model="email" placeholder="Your email" required></b-input>
+                        </b-field>
 
-                          <b-field label="密码">
-                            <b-input
-                              type="password"
-                              password-reveal
-                              placeholder="Your password"
-                              required
-                              v-model="password"
-                            ></b-input>
-                          </b-field>
+                        <b-field label="密码">
+                          <b-input
+                            type="password"
+                            password-reveal
+                            placeholder="Your password"
+                            required
+                            v-model="password"
+                          ></b-input>
+                        </b-field>
 
-                          <b-checkbox>记住我</b-checkbox>
-                        </section>
-                        <footer class="modal-card-foot">
-                          <button class="button is-primary">登录</button>
-                        </footer>
-                      </div>
-                    </form>
+                        <b-checkbox>记住我</b-checkbox>
+                      </section>
+                      <footer class="modal-card-foot">
+                        <button class="button is-primary" @click="login">登录</button>
+                      </footer>
+                    </div>
                   </b-dropdown-item>
                 </b-dropdown>
               </div>
@@ -101,6 +99,8 @@
 </template>
 
 <script>
+import { userLogin } from "@/api";
+
 export default {
   data() {
     return {
@@ -112,6 +112,20 @@ export default {
   methods: {
     userhome() {
       this.$router.push("/userhome");
+    },
+    login() {
+      userLogin(this.email, this.password)
+        .then(res => {
+          const { data } = res;
+          if (data) {
+            this.$store.state.isLogin = true;
+          } else {
+            alert("该用户不存在");
+          }
+        })
+        .catch(err => {
+          alert(err);
+        });
     }
   }
 };

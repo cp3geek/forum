@@ -50,7 +50,7 @@
               <p>
                 <strong>用户名</strong>
                 <small>主页</small>
-                <br />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.asdsadasdasdasdasdasdasdasdasdasdaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa肯德基哈师大暗红色的卡还是等我哈电话
+                <br />某某话题
               </p>
             </div>
           </div>
