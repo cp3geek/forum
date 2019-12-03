@@ -10,13 +10,26 @@ export default new Vuex.Store({
     //counter: 1000,
     isLogin: false,
     // students: [
-    //   { id: 113, name: "ssss", age: 21 }, { id: 114, name: "ssxzx", age: 22 }, { id: 115, name: "zzx", age: 18 }
+    //   { id: 113, name: "ssss", age: 21 }, { id: 114, name: "ssxzx", age: 22 }, { id: 115, name: "zzx", age: 18 }//添加对象students.push(stu)
     // ]
   },//状态,变量
   mutations: {
+    //mutation包括两部分1：字符串的事件类型2：一个回调函数，该回调函数的第一个参数就是state
+    //login是事件类型，后面是回调函数
     login(state) {
       state.isLogin = true;
-    }
+    },
+    //带参数
+    // login1(state, conut) {
+    //   state.isLogin = conut;
+    // }
+    // //组件中定义方法@click="ccc"
+    // ccc(){
+    //   this.store.commit('login1',true)
+    // }
+
+
+
     //方法
   },//包含多个更新state函数得对象
   actions: {},//包含多个对应事件回调函数得对象
@@ -26,11 +39,11 @@ export default new Vuex.Store({
 
     //如果需要传入参数，则可返回一个回调函数
     //例如：组件中{{$store.getters.moreAgestu(10)}}
-    moreAgestu(state) {
-      return function (age) {
-        return state.students.filter(s => s.age > age);
-      }
-    }
+    // moreAgestu(state) {
+    //   return function (age) {
+    //     return state.students.filter(s => s.age > age);
+    //   }
+    // }
 
 
 
