@@ -35,6 +35,10 @@ const routes = [
     path: "/commenthome",
     component: () => import("../components/commenthome/CommentHome")
   },
+  {
+    path: "/registerhome",
+    component: () => import("../components/register/RegisterHome")
+  },
 
   { path: "*", component: NotFoundComponent }
 ];

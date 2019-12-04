@@ -55,7 +55,7 @@
       <div class="navbar-end" v-if="!$store.state.isLogin">
         <div class="navbar-item">
           <div class="buttons">
-            <b-button type="is-info" outlined>注册</b-button>
+            <b-button type="is-info" outlined @click="register">注册</b-button>
             <div class="navbar-menu">
               <div class="navbar-end">
                 <b-dropdown position="is-bottom-left" aria-role="menu" trap-focus>
@@ -142,6 +142,9 @@ export default {
         .catch(err => {
           alert(err);
         });
+    },
+    register() {
+      this.$router.push("/registerhome");
     }
   }
 };
