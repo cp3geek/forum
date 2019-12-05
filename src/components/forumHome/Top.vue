@@ -134,7 +134,12 @@ export default {
           this.user = data;
           console.log(data);
           if (data != null) {
-            this.$store.commit("login");
+            this.$store.dispatch("aLogin", {
+              message: "牛逼",
+              success: () => {
+                console.log("欢迎您");
+              }
+            });
           } else {
             alert("该用户不存在");
           }

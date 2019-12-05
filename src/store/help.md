@@ -49,3 +49,6 @@ vue的响应式原理
 Vue.set(state.xxx,key,value|number)
 删除：
 vue.delete(state.info,'age')
+
+Mutation同步函数
+Actions异步操作
