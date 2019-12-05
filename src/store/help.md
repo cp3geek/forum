@@ -39,3 +39,13 @@ export default{
     }
 }
 </script>`
+
+
+
+
+vue的响应式原理
+
+增加：
+Vue.set(state.xxx,key,value|number)
+删除：
+vue.delete(state.info,'age')
