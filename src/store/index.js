@@ -4,6 +4,16 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 //全局状态管理，相当于一个公共变量，并且是响应式的，任何一个组件更改其内容，可以响应式更新页面
+
+// const moduleA = {
+//   state: {
+//   name:"dddd"
+// },
+//   getters: {},
+//   actions: {},
+//   mutations:{}
+// }
+
 export default new Vuex.Store({
 
   state: {
@@ -43,7 +53,12 @@ export default new Vuex.Store({
       }, 1000)
     }
   },//包含多个对应事件回调函数得对象，主要是异步操作
-  modules: {},
+  modules: {
+    //分模块化
+    //例如
+    //a: moduleA
+    //组件中通过$store.state.a.name，拿到moduleA中的state的name属性
+  },
   getters: {
 
 
