@@ -238,5 +238,28 @@
 </template>
 
 
+<script>
+export default {
+  data() {
+    return {
+      article: {
+        artId: 0,
+        artComNum: "",
+        artCommentId: 0,
+        artContent: "",
+        artCreTime: "",
+        artHotNum: 0,
+        artLikeNum: 0,
+        artTitle: "",
+        artTypeId: 0,
+        artUserId: 0,
+        artView: 0
+      }
+    };
+  },
+  methods: {}
+};
+</script>
+
 <style scoped>
 </style>

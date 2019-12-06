@@ -36,7 +36,7 @@
     <div class="tile is-parent is-8">
       <article class="tile is-child box">
         <p align="right">
-          <button class="button is-info" @click="all">更多推荐</button>
+          <button class="button is-info" @click="all">全部帖子</button>
         </p>
         <p class="subtitle">推荐帖子</p>
 

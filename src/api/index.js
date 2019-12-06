@@ -20,3 +20,9 @@ export const userLogin = (email, password) => {
     );
 };
 
+export const getAllArticle = () => {
+    return axios.post(
+        "/getallarticle"
+    );
+};
+
