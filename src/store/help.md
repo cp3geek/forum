@@ -52,3 +52,5 @@ vue.delete(state.info,'age')
 
 Mutation同步函数
 Actions异步操作
+
+开发注册功能，进度放慢，因为一些考试
