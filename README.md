@@ -30,17 +30,17 @@
 
 ## Project setup
 ```
-yarn install
+yarn install或者npm install
 ```
 
 ### Compiles and hot-reloads for development
 ```
-yarn run serve
+yarn serve 或者npm run serve
 ```
 
 ### Compiles and minifies for production
 ```
-yarn run build
+yarn run build 或者npm run build
 ```
 
 
