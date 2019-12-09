@@ -3,10 +3,10 @@
     <div class="tile is-parent is-8">
       <article class="tile is-child box">
         <p align="right">
-          <button class="button is-info" @click="all">全部帖子</button>
+          <button class="button is-info">全部帖子</button>
         </p>
 
-        <div class="box">
+        <div class="box" v-for="(content,index) in contents" :key="index">
           <article class="media">
             <figure class="media-left">
               <p class="image is-64x64">
@@ -16,27 +16,33 @@
             <div class="media-content">
               <div class="content">
                 <p>
-                  <strong>发帖人用户名</strong>
-                  <small>@发帖人主页</small>
-                  <br />发帖标题
+                  <strong>发帖人用户名:{{content.artId}}</strong>
+
+                  <br />
+                  发帖标题:{{content.artTitle}}
                 </p>
               </div>
               <nav class="level is-mobile">
                 <div class="level-left">
                   <a class="level-item">
                     <span class="icon is-small">
-                      <i class="fas fa-reply"></i>
+                      <i class="fab fa-hotjar"></i>
                     </span>
+                    {{content.artHotNum}}
                   </a>
+
                   <a class="level-item">
                     <span class="icon is-small">
-                      <i class="fas fa-retweet"></i>
+                      <i class="fas fa-comment-dots"></i>
                     </span>
+                    {{content.artComNum}}
                   </a>
+
                   <a class="level-item">
                     <span class="icon is-small">
                       <i class="fas fa-heart"></i>
                     </span>
+                    {{content.artLikeNum}}
                   </a>
                 </div>
               </nav>
@@ -49,137 +55,9 @@
           </article>
         </div>
 
-        <div class="box">
-          <article class="media">
-            <figure class="media-left">
-              <p class="image is-64x64">
-                <img src="https://bulma.io/images/placeholders/128x128.png" />
-              </p>
-            </figure>
-            <div class="media-content">
-              <div class="content">
-                <p>
-                  <strong>发帖人用户名</strong>
-                  <small>@发帖人主页</small>
-                  <br />发帖标题
-                </p>
-              </div>
-              <nav class="level is-mobile">
-                <div class="level-left">
-                  <a class="level-item">
-                    <span class="icon is-small">
-                      <i class="fas fa-reply"></i>
-                    </span>
-                  </a>
-                  <a class="level-item">
-                    <span class="icon is-small">
-                      <i class="fas fa-retweet"></i>
-                    </span>
-                  </a>
-                  <a class="level-item">
-                    <span class="icon is-small">
-                      <i class="fas fa-heart"></i>
-                    </span>
-                  </a>
-                </div>
-              </nav>
-            </div>
-            <div class="media-right">
-              <a class="navbar-item" slot="trigger" role="button">
-                <b-button type="is-info" outlined>查看详情</b-button>
-              </a>
-            </div>
-          </article>
-        </div>
-
-        <div class="box">
-          <article class="media">
-            <figure class="media-left">
-              <p class="image is-64x64">
-                <img src="https://bulma.io/images/placeholders/128x128.png" />
-              </p>
-            </figure>
-            <div class="media-content">
-              <div class="content">
-                <p>
-                  <strong>发帖人用户名</strong>
-                  <small>@发帖人主页</small>
-                  <br />发帖标题
-                </p>
-              </div>
-              <nav class="level is-mobile">
-                <div class="level-left">
-                  <a class="level-item">
-                    <span class="icon is-small">
-                      <i class="fas fa-reply"></i>
-                    </span>
-                  </a>
-                  <a class="level-item">
-                    <span class="icon is-small">
-                      <i class="fas fa-retweet"></i>
-                    </span>
-                  </a>
-                  <a class="level-item">
-                    <span class="icon is-small">
-                      <i class="fas fa-heart"></i>
-                    </span>
-                  </a>
-                </div>
-              </nav>
-            </div>
-            <div class="media-right">
-              <a class="navbar-item" slot="trigger" role="button">
-                <b-button type="is-info" outlined>查看详情</b-button>
-              </a>
-            </div>
-          </article>
-        </div>
-
-        <div class="box">
-          <article class="media">
-            <figure class="media-left">
-              <p class="image is-64x64">
-                <img src="https://bulma.io/images/placeholders/128x128.png" />
-              </p>
-            </figure>
-            <div class="media-content">
-              <div class="content">
-                <p>
-                  <strong>发帖人用户名</strong>
-                  <small>@发帖人主页</small>
-                  <br />发帖标题
-                </p>
-              </div>
-              <nav class="level is-mobile">
-                <div class="level-left">
-                  <a class="level-item">
-                    <span class="icon is-small">
-                      <i class="fas fa-reply"></i>
-                    </span>
-                  </a>
-                  <a class="level-item">
-                    <span class="icon is-small">
-                      <i class="fas fa-retweet"></i>
-                    </span>
-                  </a>
-                  <a class="level-item">
-                    <span class="icon is-small">
-                      <i class="fas fa-heart"></i>
-                    </span>
-                  </a>
-                </div>
-              </nav>
-            </div>
-            <div class="media-right">
-              <a class="navbar-item" slot="trigger" role="button">
-                <b-button type="is-info" outlined>查看详情</b-button>
-              </a>
-            </div>
-          </article>
-        </div>
         <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-          <a class="pagination-previous">Previous</a>
-          <a class="pagination-next">Next page</a>
+          <a class="pagination-previous">上一页</a>
+          <a class="pagination-next">下一页</a>
           <ul class="pagination-list">
             <li>
               <a class="pagination-link" aria-label="Goto page 1">1</a>
@@ -200,7 +78,7 @@
               <span class="pagination-ellipsis">&hellip;</span>
             </li>
             <li>
-              <a class="pagination-link" aria-label="Goto page 86">86</a>
+              <a class="pagination-link" aria-label="Goto page 86">{{totalPages}}</a>
             </li>
           </ul>
         </nav>
@@ -239,25 +117,45 @@
 
 
 <script>
+import { getAllArticle } from "@/api";
 export default {
   data() {
     return {
-      article: {
-        artId: 0,
-        artComNum: "",
-        artCommentId: 0,
-        artContent: "",
-        artCreTime: "",
-        artHotNum: 0,
-        artLikeNum: 0,
-        artTitle: "",
-        artTypeId: 0,
-        artUserId: 0,
-        artView: 0
-      }
+      totalPages: 0,
+      totalElements: 0,
+      currentnumber: 1,
+      contents: [
+        {
+          artId: 0,
+          artComNum: "",
+          artCommentId: 0,
+          artContent: "",
+          artCreTime: "",
+          artHotNum: 0,
+          artLikeNum: 0,
+          artTitle: "",
+          artTypeId: 0,
+          artUserId: 0,
+          artView: 0
+        }
+      ]
     };
   },
-  methods: {}
+  mounted() {
+    getAllArticle()
+      .then(res => {
+        const { data } = res;
+        if (data != null) {
+          this.totalPages = data.totalPages;
+          this.totalElements = data.totalElements;
+          this.currentnumber = data.number;
+          this.contents = data.content;
+        }
+      })
+      .catch(() => {
+        alert("服务器被吃了");
+      });
+  }
 };
 </script>
 
