@@ -28,13 +28,6 @@
 
 注册页面，登录功能实现，评论首页，查看帖子详情，查看全部帖子页面搭建完成
 
-项目部分截图
-
-![](C:\Users\Cp3sComputer\Desktop\批注 2019-12-09 103703.png)
-
-![](C:\Users\Cp3sComputer\Desktop\批注 2019-12-09 103724.png)
-
-![](C:\Users\Cp3sComputer\Desktop\批注 2019-12-09 103742.png)
 
 
 
