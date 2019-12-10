@@ -55,33 +55,23 @@
           </article>
         </div>
 
-        <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-          <a class="pagination-previous">上一页</a>
-          <a class="pagination-next">下一页</a>
-          <ul class="pagination-list">
-            <li>
-              <a class="pagination-link" aria-label="Goto page 1">1</a>
-            </li>
-            <li>
-              <span class="pagination-ellipsis">&hellip;</span>
-            </li>
-            <li>
-              <a class="pagination-link" aria-label="Goto page 45">45</a>
-            </li>
-            <li>
-              <a class="pagination-link is-current" aria-label="Page 46" aria-current="page">46</a>
-            </li>
-            <li>
-              <a class="pagination-link" aria-label="Goto page 47">47</a>
-            </li>
-            <li>
-              <span class="pagination-ellipsis">&hellip;</span>
-            </li>
-            <li>
-              <a class="pagination-link" aria-label="Goto page 86">{{totalPages}}</a>
-            </li>
-          </ul>
-        </nav>
+        <section>
+          <b-pagination
+            :total="total"
+            :current.sync="current"
+            :range-before="rangeBefore"
+            :range-after="rangeAfter"
+            :order="order"
+            :size="size"
+            :per-page="perPage"
+            :icon-prev="prevIcon"
+            :icon-next="nextIcon"
+            aria-next-label="Next page"
+            aria-previous-label="Previous page"
+            aria-page-label="Page"
+            aria-current-label="Current page"
+          ></b-pagination>
+        </section>
       </article>
     </div>
     <div class="tile is-parent">
@@ -121,9 +111,18 @@ import { getAllArticle } from "@/api";
 export default {
   data() {
     return {
+      total: 5,
+      current: 1,
+      perPage: 5, //一页的记录数
+      rangeBefore: 3,
+      rangeAfter: 1,
+      order: "is-centered",
+      size: "default",
+      prevIcon: "chevron-left",
+      nextIcon: "chevron-right",
+
       totalPages: 0,
-      totalElements: 0,
-      currentnumber: 1,
+
       contents: [
         {
           artId: 0,
@@ -146,9 +145,10 @@ export default {
       .then(res => {
         const { data } = res;
         if (data != null) {
-          this.totalPages = data.totalPages;
-          this.totalElements = data.totalElements;
-          this.currentnumber = data.number;
+          this.total = data.totalElements; //总记录数
+          this.totalPages = data.totalPages; //总页数
+          console.log(this.totalElements);
+          this.current = data.number;
           this.contents = data.content;
         }
       })
