@@ -26,3 +26,17 @@ export const getAllArticle = () => {
     );
 };
 
+export const getAllArticleType = () => {
+    return axios.post(
+        "/getallarticletype"
+    );
+};
+
+export const getArticleByTypeId = (typeId) => {
+    return axios.post(
+        "/getarticlebytypeid",
+        Qs.stringify({ typeId })
+    )
+}
+
+
