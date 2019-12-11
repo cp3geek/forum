@@ -10,16 +10,16 @@
           <article class="media">
             <figure class="media-left">
               <p class="image is-64x64">
-                <img src="https://bulma.io/images/placeholders/128x128.png" />
+                <img :src="require(`../../assets/${content.user.userImg}`)" class="size" />
               </p>
             </figure>
             <div class="media-content">
               <div class="content">
                 <p>
-                  <strong>发帖人用户名:{{content.artId}}</strong>
+                  <strong>发帖人用户名:{{content.user.userName}}</strong>
 
                   <br />
-                  发帖标题:{{content.artTitle}}
+                  发帖标题:{{content.article.artTitle}}
                 </p>
               </div>
               <nav class="level is-mobile">
@@ -28,21 +28,21 @@
                     <span class="icon is-small">
                       <i class="fab fa-hotjar"></i>
                     </span>
-                    {{content.artHotNum}}
+                    {{content.article.artHotNum}}
                   </a>
 
                   <a class="level-item">
                     <span class="icon is-small">
                       <i class="fas fa-comment-dots"></i>
                     </span>
-                    {{content.artComNum}}
+                    {{content.article.artComNum}}
                   </a>
 
                   <a class="level-item">
                     <span class="icon is-small">
                       <i class="fas fa-heart"></i>
                     </span>
-                    {{content.artLikeNum}}
+                    {{content.article.artLikeNum}}
                   </a>
                 </div>
               </nav>
@@ -54,24 +54,6 @@
             </div>
           </article>
         </div>
-
-        <section>
-          <b-pagination
-            :total="total"
-            :current.sync="current"
-            :range-before="rangeBefore"
-            :range-after="rangeAfter"
-            :order="order"
-            :size="size"
-            :per-page="perPage"
-            :icon-prev="prevIcon"
-            :icon-next="nextIcon"
-            aria-next-label="Next page"
-            aria-previous-label="Previous page"
-            aria-page-label="Page"
-            aria-current-label="Current page"
-          ></b-pagination>
-        </section>
       </article>
     </div>
     <div class="tile is-parent">
@@ -122,29 +104,38 @@ import { getArticleByTypeId } from "@/api";
 export default {
   data() {
     return {
-      total: 5,
-      current: 1,
-      perPage: 5, //一页的记录数
-      rangeBefore: 3,
-      rangeAfter: 1,
-      order: "is-centered",
-      size: "default",
-      prevIcon: "chevron-left",
-      nextIcon: "chevron-right",
-      totalPages: 0,
       contents: [
         {
-          artId: 0,
-          artComNum: "",
-          artCommentId: 0,
-          artContent: "",
-          artCreTime: "",
-          artHotNum: 0,
-          artLikeNum: 0,
-          artTitle: "",
-          artTypeId: 0,
-          artUserId: 0,
-          artView: 0
+          article: {
+            artId: 0,
+            artComNum: "",
+            artCommentId: 0,
+            artContent: "",
+            artCreTime: "",
+            artHotNum: 0,
+            artLikeNum: 0,
+            artTitle: "",
+            artTypeId: 0,
+            artUserId: 0,
+            artView: 0
+          }
+        },
+        {
+          user: {
+            userId: 0,
+            userPassword: 0,
+            userName: "",
+            userEmail: "",
+            userSex: "",
+            userPhone: "",
+            userStatus: 0,
+            userTime: "",
+            userShow: "",
+            userBlog: "",
+            userImg: "404.png",
+            userFans: "",
+            userConcern: ""
+          }
         }
       ],
       ArticleTypes: [
@@ -161,15 +152,10 @@ export default {
     getAllArticle()
       .then(res => {
         const { data } = res;
-        if (data != null) {
-          this.total = data.totalElements; //总记录数
-          this.totalPages = data.totalPages; //总页数
-          this.current = data.number;
-          this.contents = data.content;
-        }
+        this.contents = data;
       })
-      .catch(() => {
-        alert("服务器被吃了");
+      .catch(err => {
+        console.log(err);
       });
 
     getAllArticleType()
@@ -187,6 +173,7 @@ export default {
         .then(res => {
           const { data } = res;
           console.log(data);
+          this.contents = data;
         })
         .catch(() => {
           alert("服务器被吃了");
@@ -198,4 +185,8 @@ export default {
 </script>
 
 <style scoped>
+.size {
+  width: 64px;
+  height: 64px;
+}
 </style>
