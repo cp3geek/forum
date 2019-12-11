@@ -89,10 +89,19 @@
           </header>
           <div class="card-content">
             <div class="content">
-              <a href="#">跳蚤市场</a>.
-              <a href="#">步行街</a>
-              <a href="#">篮球</a>
-              <a href="#">学习</a>
+              <section>
+                <b-tooltip
+                  v-for="(ArticleType,index) in ArticleTypes"
+                  :key="index"
+                  :label="ArticleType.typeDesc"
+                  class="is-info"
+                >
+                  <button
+                    class="button is-info is-outlined"
+                    @click="getTypeArticle(ArticleType.typeId)"
+                  >{{ArticleType.typeName}}</button>
+                </b-tooltip>
+              </section>
               <br />
             </div>
           </div>
@@ -108,6 +117,8 @@
 
 <script>
 import { getAllArticle } from "@/api";
+import { getAllArticleType } from "@/api";
+import { getArticleByTypeId } from "@/api";
 export default {
   data() {
     return {
@@ -120,9 +131,7 @@ export default {
       size: "default",
       prevIcon: "chevron-left",
       nextIcon: "chevron-right",
-
       totalPages: 0,
-
       contents: [
         {
           artId: 0,
@@ -137,6 +146,14 @@ export default {
           artUserId: 0,
           artView: 0
         }
+      ],
+      ArticleTypes: [
+        {
+          typeId: 0,
+          typeCreateTime: "",
+          typeName: "",
+          typeDesc: ""
+        }
       ]
     };
   },
@@ -147,7 +164,6 @@ export default {
         if (data != null) {
           this.total = data.totalElements; //总记录数
           this.totalPages = data.totalPages; //总页数
-          console.log(this.totalElements);
           this.current = data.number;
           this.contents = data.content;
         }
@@ -155,6 +171,28 @@ export default {
       .catch(() => {
         alert("服务器被吃了");
       });
+
+    getAllArticleType()
+      .then(res => {
+        const { data } = res;
+        this.ArticleTypes = data;
+      })
+      .catch(() => {
+        alert("服务器被吃了");
+      });
+  },
+  methods: {
+    getTypeArticle(typeId) {
+      getArticleByTypeId(typeId)
+        .then(res => {
+          const { data } = res;
+          console.log(data);
+        })
+        .catch(() => {
+          alert("服务器被吃了");
+        });
+      console.log(typeId);
+    }
   }
 };
 </script>
