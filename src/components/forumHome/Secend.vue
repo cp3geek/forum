@@ -2,7 +2,7 @@
   <section class="hero is-white">
     <div class="hero-body">
       <div class="container">
-        <h1 class="title">重工论坛</h1>
+        <h1 class="title">TALK论坛</h1>
         <h2 class="subtitle is-italic">
           <nav class="breadcrumb has-bullet-separator" aria-label="breadcrumbs">
             <ul>
