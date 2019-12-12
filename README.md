@@ -30,7 +30,7 @@
 
 
 项目部分截图
- ![image](https://github.com/Chp3/forum/master/assets/imgs/1.png)
+ ![image](https://github.com/Chp3/forum/src/assets/imgs/1.png)
 
 ## Project setup
 ```
