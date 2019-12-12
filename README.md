@@ -31,6 +31,9 @@
 
 项目部分截图
  ![image](src/assets/imgs/1.png)
+ ![image](src/assets/imgs/2.png)
+ ![image](src/assets/imgs/3.png)
+ ![image](src/assets/imgs/4.png)
 
 ## Project setup
 ```
