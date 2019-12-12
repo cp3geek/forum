@@ -3,7 +3,7 @@
     <div class="tile is-parent is-8">
       <article class="tile is-child box">
         <p align="right">
-          <button class="button is-info">全部帖子</button>
+          <button class="button is-info" @click="getAll">全部帖子</button>
         </p>
 
         <div class="box" v-for="(content,index) in contents" :key="index">
@@ -91,6 +91,8 @@
             <a href="#" class="card-footer-item">进入板块分区</a>
           </footer>
         </div>
+
+        <img v-if="btnFlag" class="go-top" @click="backTop" src="../../assets/5.png" />
       </article>
     </div>
   </div>
@@ -104,6 +106,7 @@ import { getArticleByTypeId } from "@/api";
 export default {
   data() {
     return {
+      btnFlag: false,
       contents: [
         {
           article: {
@@ -118,9 +121,7 @@ export default {
             artTypeId: 0,
             artUserId: 0,
             artView: 0
-          }
-        },
-        {
+          },
           user: {
             userId: 0,
             userPassword: 0,
@@ -149,14 +150,15 @@ export default {
     };
   },
   mounted() {
-    getAllArticle()
-      .then(res => {
-        const { data } = res;
-        this.contents = data;
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    window.addEventListener("scroll", this.scrollToTop),
+      getAllArticle()
+        .then(res => {
+          const { data } = res;
+          this.contents = data;
+        })
+        .catch(err => {
+          alert(err);
+        });
 
     getAllArticleType()
       .then(res => {
@@ -167,18 +169,55 @@ export default {
         alert("服务器被吃了");
       });
   },
+  destroyed() {
+    window.removeEventListener("scroll", this.scrollToTop);
+  },
   methods: {
+    backTop() {
+      const that = this;
+      let timer = setInterval(() => {
+        let ispeed = Math.floor(-that.scrollTop / 5);
+        document.documentElement.scrollTop = document.body.scrollTop =
+          that.scrollTop + ispeed;
+        if (that.scrollTop === 0) {
+          clearInterval(timer);
+        }
+      }, 16);
+    },
+
+    scrollToTop() {
+      const that = this;
+      let scrollTop =
+        window.pageYOffset ||
+        document.documentElement.scrollTop ||
+        document.body.scrollTop;
+      that.scrollTop = scrollTop;
+      if (that.scrollTop > 0) {
+        that.btnFlag = true;
+      } else {
+        that.btnFlag = false;
+      }
+    },
+
     getTypeArticle(typeId) {
       getArticleByTypeId(typeId)
         .then(res => {
           const { data } = res;
-          console.log(data);
           this.contents = data;
         })
         .catch(() => {
           alert("服务器被吃了");
         });
-      console.log(typeId);
+    },
+    getAll() {
+      getAllArticle()
+        .then(res => {
+          const { data } = res;
+          this.contents = data;
+        })
+        .catch(err => {
+          alert(err);
+        });
     }
   }
 };
