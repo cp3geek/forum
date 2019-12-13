@@ -91,8 +91,6 @@
             <a href="#" class="card-footer-item">进入板块分区</a>
           </footer>
         </div>
-
-        <img v-if="btnFlag" class="go-top" @click="backTop" src="../../assets/5.png" />
       </article>
     </div>
   </div>
@@ -150,15 +148,14 @@ export default {
     };
   },
   mounted() {
-    window.addEventListener("scroll", this.scrollToTop),
-      getAllArticle()
-        .then(res => {
-          const { data } = res;
-          this.contents = data;
-        })
-        .catch(err => {
-          alert(err);
-        });
+    getAllArticle()
+      .then(res => {
+        const { data } = res;
+        this.contents = data;
+      })
+      .catch(err => {
+        alert(err);
+      });
 
     getAllArticleType()
       .then(res => {
@@ -169,36 +166,8 @@ export default {
         alert("服务器被吃了");
       });
   },
-  destroyed() {
-    window.removeEventListener("scroll", this.scrollToTop);
-  },
+
   methods: {
-    backTop() {
-      const that = this;
-      let timer = setInterval(() => {
-        let ispeed = Math.floor(-that.scrollTop / 5);
-        document.documentElement.scrollTop = document.body.scrollTop =
-          that.scrollTop + ispeed;
-        if (that.scrollTop === 0) {
-          clearInterval(timer);
-        }
-      }, 16);
-    },
-
-    scrollToTop() {
-      const that = this;
-      let scrollTop =
-        window.pageYOffset ||
-        document.documentElement.scrollTop ||
-        document.body.scrollTop;
-      that.scrollTop = scrollTop;
-      if (that.scrollTop > 0) {
-        that.btnFlag = true;
-      } else {
-        that.btnFlag = false;
-      }
-    },
-
     getTypeArticle(typeId) {
       getArticleByTypeId(typeId)
         .then(res => {
