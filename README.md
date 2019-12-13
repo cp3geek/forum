@@ -1,6 +1,6 @@
 # forum
 
-项目正在开发当中，持续更新(这只是前端项目)
+项目正在开发当中，持续更新(前端项目)不断学习，欢迎各位大佬提issues
 
 目前所用到的技术栈
 
@@ -29,7 +29,11 @@
 注册页面，登录功能实现，评论首页，查看帖子详情，查看全部帖子页面搭建完成
 
 
-
+项目部分截图
+ ![image](src/assets/imgs/1.png)
+ ![image](src/assets/imgs/2.png)
+ ![image](src/assets/imgs/3.png)
+ ![image](src/assets/imgs/4.png)
 
 ## Project setup
 ```
