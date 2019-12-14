@@ -103,8 +103,8 @@ export default {
   z-index: 999;
   bottom: 1.8rem;
   right: 0.26rem;
-  width: 48px;
-  height: 58px;
+  width: 25px;
+  height: 30px;
   overflow: hidden;
 }
 </style>

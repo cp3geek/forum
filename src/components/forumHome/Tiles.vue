@@ -4,39 +4,42 @@
       <article class="tile is-child box">
         <p class="subtitle">热门板块</p>
         <p align="right">
-          <button class="button is-info">全部板块</button>
+          <b-button type="button is-info" outlined>全部板块</b-button>
         </p>
-        <div class="card">
-          <header class="card-header">
-            <p class="card-header-title">板块名</p>
-            <a href="#" class="card-header-icon" aria-label="more options">
-              <span class="icon">
-                <i class="fas fa-angle-down" aria-hidden="true"></i>
-              </span>
-            </a>
-          </header>
-          <div class="card-content">
-            <div class="content">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.板块简介
-              <a
-                href="#"
-              >@bulmaio</a>.
-              <a href="#">#css</a>
-              <a href="#">#responsive</a>
-              <br />
-            </div>
-          </div>
-          <footer class="card-footer">
-            <a href="#" class="card-footer-item">关注</a>
-            <a href="#" class="card-footer-item">进入板块</a>
-          </footer>
-        </div>
+        <b-carousel>
+          <b-carousel-item v-for="(content, i) in contents" :key="i">
+            <section>
+              <div class="hero-body has-text-centered">
+                <div class="card">
+                  <header class="card-header">
+                    <p class="card-header-title">板块名:{{content.typeName}}</p>
+                    <a href="#" class="card-header-icon" aria-label="more options">
+                      <span class="icon">
+                        <i class="fas fa-angle-down" aria-hidden="true"></i>
+                      </span>
+                    </a>
+                  </header>
+                  <div class="card-content">
+                    <div class="content">
+                      板块简介:{{content.typeDesc}}
+                      <br />
+                    </div>
+                  </div>
+                  <footer class="card-footer">
+                    <a href="#" class="card-footer-item">关注</a>
+                    <a href="#" class="card-footer-item">进入板块</a>
+                  </footer>
+                </div>
+              </div>
+            </section>
+          </b-carousel-item>
+        </b-carousel>
       </article>
     </div>
     <div class="tile is-parent is-8">
       <article class="tile is-child box">
         <p align="right">
-          <button class="button is-info" @click="allart">全部帖子</button>
+          <b-button type="button is-info" outlined @click="allart">全部帖子</b-button>
         </p>
         <p class="subtitle">推荐帖子</p>
 
@@ -133,7 +136,37 @@
 </template>
 
 <script>
+import { getHotArticleType } from "@/api";
 export default {
+  data() {
+    return {
+      contents: {
+        typeId: 0,
+        typeName: "",
+        typeCreateTime: "",
+        typeDesc: "",
+        articleNum: 0
+      },
+
+      carousels: [
+        { text: "Slide 1", color: "primary" },
+        { text: "Slide 2", color: "info" },
+        { text: "Slide 3", color: "success" },
+        { text: "Slide 4", color: "warning" },
+        { text: "Slide 5", color: "danger" }
+      ]
+    };
+  },
+  mounted() {
+    getHotArticleType()
+      .then(res => {
+        const { data } = res;
+        this.contents = data.content;
+      })
+      .catch(() => {
+        alert("服务器被吃了");
+      });
+  },
   methods: {
     allart() {
       this.$router.push("/allarticlehome");

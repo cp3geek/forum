@@ -39,4 +39,10 @@ export const getArticleByTypeId = (typeId) => {
     )
 }
 
+export const getHotArticleType = () => {
+    return axios.post(
+        "/gethotarticletype",
+    )
+}
+
 
