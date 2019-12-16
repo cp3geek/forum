@@ -21,6 +21,7 @@
 `buefy-ui`
 
 `mysql`
+jwt+springsecurity
 
 后端项目地址：https://github.com/Chp3/universityforum
 
