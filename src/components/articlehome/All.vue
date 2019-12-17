@@ -153,18 +153,14 @@ export default {
         const { data } = res;
         this.contents = data;
       })
-      .catch(err => {
-        alert(err);
-      });
+      .catch(() => {});
 
     getAllArticleType()
       .then(res => {
         const { data } = res;
         this.ArticleTypes = data;
       })
-      .catch(() => {
-        alert("服务器被吃了");
-      });
+      .catch(() => {});
   },
 
   methods: {
@@ -174,9 +170,7 @@ export default {
           const { data } = res;
           this.contents = data;
         })
-        .catch(() => {
-          alert("服务器被吃了");
-        });
+        .catch(() => {});
     },
     getAll() {
       getAllArticle()
@@ -184,9 +178,7 @@ export default {
           const { data } = res;
           this.contents = data;
         })
-        .catch(err => {
-          alert(err);
-        });
+        .catch(() => {});
     }
   }
 };

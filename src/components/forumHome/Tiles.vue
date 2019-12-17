@@ -3,6 +3,7 @@
     <div class="tile is-parent">
       <article class="tile is-child box">
         <p class="subtitle">热门板块</p>
+        
         <p align="right">
           <b-button type="button is-info" outlined>全部板块</b-button>
         </p>
@@ -164,7 +165,7 @@ export default {
         this.contents = data.content;
       })
       .catch(() => {
-        alert("服务器被吃了");
+        
       });
   },
   methods: {

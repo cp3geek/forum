@@ -144,9 +144,7 @@ export default {
             alert("该用户不存在");
           }
         })
-        .catch(err => {
-          alert(err);
-        });
+        .catch(() => {});
     },
     register() {
       this.$router.push("/registerhome");

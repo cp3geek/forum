@@ -41,7 +41,7 @@ export default {
             alert("你不是管理员");
           }
         })
-        .catch(() => alert("服务器被吃了"))
+        .catch(() => {})
         .finally(() => (this.loading = false));
     }
   }
