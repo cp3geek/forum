@@ -3,7 +3,7 @@
     <div class="tile is-parent">
       <article class="tile is-child box">
         <p class="subtitle">热门板块</p>
-        
+
         <p align="right">
           <b-button type="button is-info" outlined>全部板块</b-button>
         </p>
@@ -138,6 +138,7 @@
 
 <script>
 import { getHotArticleType } from "@/api";
+import { getPageMain } from "@/api";
 export default {
   data() {
     return {
@@ -164,9 +165,11 @@ export default {
         const { data } = res;
         this.contents = data.content;
       })
-      .catch(() => {
-        
-      });
+      .catch(() => {});
+
+    getPageMain().then(res => {
+      console.log(res);
+    });
   },
   methods: {
     allart() {
