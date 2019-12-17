@@ -15,7 +15,6 @@ axios.defaults.baseURL = "http://localhost:9090";
 
 
 axios.interceptors.response.use(res => {
-    console.log(res)
     return res;
 }, () => {
 
@@ -50,6 +49,11 @@ export const getHotArticleType = () => {
     return axios.post("/gethotarticletype");
 };
 
-export const getPageMain = () => {
-    return axios("/getpagearticle")
+export const getPageMain = pageNum => {
+    return axios({
+        url: "/getpagearticle",
+        params: {
+            page: pageNum
+        }
+    })
 }

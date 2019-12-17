@@ -8,12 +8,12 @@
           <b-button type="button is-info" outlined>全部板块</b-button>
         </p>
         <b-carousel>
-          <b-carousel-item v-for="(content, i) in contents" :key="i">
+          <b-carousel-item v-for="(content, index) in contents" :key="index">
             <section>
               <div class="hero-body has-text-centered">
                 <div class="card">
                   <header class="card-header">
-                    <p class="card-header-title">板块名:{{content.typeName}}</p>
+                    <p class="card-header-title">板块名:{{ content.typeName }}</p>
                     <a href="#" class="card-header-icon" aria-label="more options">
                       <span class="icon">
                         <i class="fas fa-angle-down" aria-hidden="true"></i>
@@ -22,7 +22,7 @@
                   </header>
                   <div class="card-content">
                     <div class="content">
-                      板块简介:{{content.typeDesc}}
+                      板块简介:{{ content.typeDesc }}
                       <br />
                     </div>
                   </div>
@@ -44,82 +44,43 @@
         </p>
         <p class="subtitle">推荐帖子</p>
 
-        <div class="box">
+        <div class="box" v-for="(item, i) in info" :key="i">
           <article class="media">
             <figure class="media-left">
               <p class="image is-64x64">
-                <img src="https://bulma.io/images/placeholders/128x128.png" />
+                <img :src="require(`../../assets/user/${item.user.userImg}`)" />
+                <!-- <img src="../../assets/user1.jpg" alt /> -->
               </p>
             </figure>
             <div class="media-content">
               <div class="content">
                 <p>
-                  <strong>发帖人用户名</strong>
-                  <small>@发帖人主页</small>
-                  <br />发帖标题
+                  <strong>{{ item.user.userName }}</strong>
+                  <br />
+                  {{ item.article.artTitle }}
                 </p>
               </div>
               <nav class="level is-mobile">
                 <div class="level-left">
                   <a class="level-item">
                     <span class="icon is-small">
-                      <i class="fas fa-reply"></i>
+                      <i class="fab fa-hotjar"></i>
                     </span>
+                    {{ item.article.artHotNum }}
                   </a>
-                  <a class="level-item">
-                    <span class="icon is-small">
-                      <i class="fas fa-retweet"></i>
-                    </span>
-                  </a>
-                  <a class="level-item">
-                    <span class="icon is-small">
-                      <i class="fas fa-heart"></i>
-                    </span>
-                  </a>
-                </div>
-              </nav>
-            </div>
-            <div class="media-right">
-              <a class="navbar-item" slot="trigger" role="button">
-                <b-button type="is-info" outlined>
-                  <router-link to="/commenthome">查看详情</router-link>
-                </b-button>
-              </a>
-            </div>
-          </article>
-        </div>
 
-        <div class="box">
-          <article class="media">
-            <figure class="media-left">
-              <p class="image is-64x64">
-                <img src="https://bulma.io/images/placeholders/128x128.png" />
-              </p>
-            </figure>
-            <div class="media-content">
-              <div class="content">
-                <p>
-                  <strong>发帖人用户名</strong>
-                  <small>@发帖人主页</small>
-                  <br />发帖标题
-                </p>
-              </div>
-              <nav class="level is-mobile">
-                <div class="level-left">
                   <a class="level-item">
                     <span class="icon is-small">
-                      <i class="fas fa-reply"></i>
+                      <i class="fas fa-comment-dots"></i>
                     </span>
+                    {{ item.article.artComNum }}
                   </a>
-                  <a class="level-item">
-                    <span class="icon is-small">
-                      <i class="fas fa-retweet"></i>
-                    </span>
-                  </a>
+
                   <a class="level-item">
                     <span class="icon is-small">
                       <i class="fas fa-heart"></i>
                     </span>
+                    {{ item.article.artLikeNum }}
                   </a>
                 </div>
               </nav>
@@ -131,6 +92,7 @@
             </div>
           </article>
         </div>
+        <Pageination />
       </article>
     </div>
   </div>
@@ -139,9 +101,42 @@
 <script>
 import { getHotArticleType } from "@/api";
 import { getPageMain } from "@/api";
+import Pageination from "../forumHome/Pageination.vue";
 export default {
   data() {
     return {
+      info: [
+        {
+          article: {
+            artId: 0,
+            artUserId: 1,
+            artTitle: "",
+            artTypeId: 0,
+            artContent: "",
+            artCommentId: 0,
+            artCreTime: "",
+            artView: "",
+            artComNum: 0,
+            artHotNum: 0,
+            artLikeNum: 0
+          },
+          user: {
+            userId: 0,
+            userPassword: 0,
+            userName: "",
+            userEmail: "",
+            userSex: "",
+            userPhone: "",
+            userStatus: 0,
+            userTime: "",
+            userShow: "",
+            userBlog: "",
+            userImg: "",
+            userFans: 0,
+            userConcern: 0
+          }
+        }
+      ],
       contents: {
         typeId: 0,
         typeName: "",
@@ -167,14 +162,20 @@ export default {
       })
       .catch(() => {});
 
-    getPageMain().then(res => {
-      console.log(res);
-    });
+    getPageMain()
+      .then(res => {
+        const { data } = res;
+        this.info = data.content;
+      })
+      .catch(() => {});
   },
   methods: {
     allart() {
       this.$router.push("/allarticlehome");
     }
+  },
+  components: {
+    Pageination
   }
 };
 </script>
@@ -187,8 +188,8 @@ export default {
   text-align: center;
   margin: 0 auto;
 }
+.size {
+  width: 64px;
+  height: 64px;
+}
 </style>
-
-
-
-
