@@ -13,6 +13,7 @@
       :per-page="perPage"
       :icon-prev="prevIcon"
       :icon-next="nextIcon"
+      @change="change"
       aria-next-label="Next page"
       aria-previous-label="Previous page"
       aria-page-label="Page"
@@ -22,6 +23,7 @@
 </template>
 
 <script>
+import { getPageMain } from "@/api";
 export default {
   data() {
     return {
@@ -37,6 +39,18 @@ export default {
       prevIcon: "chevron-left",
       nextIcon: "chevron-right"
     };
+  },
+  methods: {
+    change(number) {
+      alert("xiayiye");
+      console.log(number);
+      getPageMain(number)
+        .then(res => {
+          const { data } = res;
+          this.info = data.content;//bug
+        })
+        .catch(() => {});
+    }
   }
 };
 </script>

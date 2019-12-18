@@ -48,7 +48,7 @@
           <article class="media">
             <figure class="media-left">
               <p class="image is-64x64">
-                <img :src="require(`../../assets/user/${item.user.userImg}`)" />
+                <img :src="require(`@/assets/${item.user.userImg}`)" class="size" />
                 <!-- <img src="../../assets/user1.jpg" alt /> -->
               </p>
             </figure>
@@ -162,6 +162,8 @@ export default {
       })
       .catch(() => {});
 
+
+//bug，应该用action异步处理，再提交commit状态，明日更新
     getPageMain()
       .then(res => {
         const { data } = res;

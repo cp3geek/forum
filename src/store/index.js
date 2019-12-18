@@ -20,6 +20,38 @@ export default new Vuex.Store({
 
   state: {
     isLogin: false,
+    info: [
+      {
+        article: {
+          artId: 0,
+          artUserId: 1,
+          artTitle: "",
+          artTypeId: 0,
+          artContent: "",
+          artCommentId: 0,
+          artCreTime: "",
+          artView: "",
+          artComNum: 0,
+          artHotNum: 0,
+          artLikeNum: 0
+        },
+        user: {
+          userId: 0,
+          userPassword: 0,
+          userName: "",
+          userEmail: "",
+          userSex: "",
+          userPhone: "",
+          userStatus: 0,
+          userTime: "",
+          userShow: "",
+          userBlog: "",
+          userImg: "",
+          userFans: 0,
+          userConcern: 0
+        }
+      }
+    ]
   },
   mutations,
   actions,

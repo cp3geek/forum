@@ -5,6 +5,10 @@ export default {
     login(state) {
         state.isLogin = true;
     },
+
+    getpagemain(state, payload) {
+        state.info = payload;
+    }
     //带参数
     // login1(state, conut) {
     //   state.isLogin = conut;
