@@ -1,5 +1,6 @@
 import axios from "axios";
 import Qs from "qs";
+import { SnackbarProgrammatic as Snackbar } from 'buefy'
 
 //全局默认配置
 axios.defaults.baseURL = "http://localhost:9090";
@@ -17,8 +18,19 @@ axios.defaults.baseURL = "http://localhost:9090";
 axios.interceptors.response.use(res => {
     return res;
 }, () => {
-
-    alert("服务器被吃了")
+    Snackbar.open({
+        message: '服务器被吃了',
+        type: 'is-warning',
+        position: 'is-top',
+        actionText: 'Retry',
+        indefinite: true,
+        onAction: () => {
+            this.$buefy.toast.open({
+                message: 'Action pressed',
+                queue: false
+            })
+        }
+    })
 })
 
 //post传数据用data，get传参数用params

@@ -23,7 +23,6 @@
 </template>
 
 <script>
-import { getPageMain } from "@/api";
 export default {
   data() {
     return {
@@ -42,14 +41,7 @@ export default {
   },
   methods: {
     change(number) {
-      alert("xiayiye");
-      console.log(number);
-      getPageMain(number)
-        .then(res => {
-          const { data } = res;
-          this.info = data.content;//bug
-        })
-        .catch(() => {});
+      this.$store.dispatch("changepage", number);
     }
   }
 };

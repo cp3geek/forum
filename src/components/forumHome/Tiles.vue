@@ -44,7 +44,7 @@
         </p>
         <p class="subtitle">推荐帖子</p>
 
-        <div class="box" v-for="(item, i) in info" :key="i">
+        <div class="box" v-for="(item, i) in $store.state.info" :key="i">
           <article class="media">
             <figure class="media-left">
               <p class="image is-64x64">
@@ -100,43 +100,43 @@
 
 <script>
 import { getHotArticleType } from "@/api";
-import { getPageMain } from "@/api";
+// import { getPageMain } from "@/api";
 import Pageination from "../forumHome/Pageination.vue";
 export default {
   data() {
     return {
-      info: [
-        {
-          article: {
-            artId: 0,
-            artUserId: 1,
-            artTitle: "",
-            artTypeId: 0,
-            artContent: "",
-            artCommentId: 0,
-            artCreTime: "",
-            artView: "",
-            artComNum: 0,
-            artHotNum: 0,
-            artLikeNum: 0
-          },
-          user: {
-            userId: 0,
-            userPassword: 0,
-            userName: "",
-            userEmail: "",
-            userSex: "",
-            userPhone: "",
-            userStatus: 0,
-            userTime: "",
-            userShow: "",
-            userBlog: "",
-            userImg: "",
-            userFans: 0,
-            userConcern: 0
-          }
-        }
-      ],
+      // info: [
+      //   {
+      //     article: {
+      //       artId: 0,
+      //       artUserId: 1,
+      //       artTitle: "",
+      //       artTypeId: 0,
+      //       artContent: "",
+      //       artCommentId: 0,
+      //       artCreTime: "",
+      //       artView: "",
+      //       artComNum: 0,
+      //       artHotNum: 0,
+      //       artLikeNum: 0
+      //     },
+      //     user: {
+      //       userId: 0,
+      //       userPassword: 0,
+      //       userName: "",
+      //       userEmail: "",
+      //       userSex: "",
+      //       userPhone: "",
+      //       userStatus: 0,
+      //       userTime: "",
+      //       userShow: "",
+      //       userBlog: "",
+      //       userImg: "",
+      //       userFans: 0,
+      //       userConcern: 0
+      //     }
+      //   }
+      // ],
       contents: {
         typeId: 0,
         typeName: "",
@@ -162,14 +162,14 @@ export default {
       })
       .catch(() => {});
 
-
-//bug，应该用action异步处理，再提交commit状态，明日更新
-    getPageMain()
-      .then(res => {
-        const { data } = res;
-        this.info = data.content;
-      })
-      .catch(() => {});
+    this.$store.dispatch("getpagemain");
+    //bug，应该用action异步处理，再提交commit状态，明日更新（已解决）
+    // getPageMain()
+    //   .then(res => {
+    //     const { data } = res;
+    //     this.info = data.content;
+    //   })
+    //   .catch(() => {});
   },
   methods: {
     allart() {
