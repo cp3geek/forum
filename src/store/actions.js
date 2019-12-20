@@ -13,13 +13,20 @@ export default {
 
     getpagemain(context) {
         getPageMain().then(res => {
-            context.commit('getpagemain', res.data.content)
+            context.commit('getpagemain', {
+                info: res.data.content,
+                totalElements: res.data.totalElements
+            }
+
+            )
         }).catch()
     },
 
     changepage(context, number) {
         getPageMain(number).then(res => {
-            context.commit('getpagemain', res.data.content)
+            context.commit('getpagemain', {
+                info: res.data.content
+            })
         }).catch()
     }
 

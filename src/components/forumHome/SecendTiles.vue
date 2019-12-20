@@ -33,7 +33,10 @@
           <p class="title">友情链接</p>
           <p class="subtitle">其他大学论坛等一些技术论坛</p>
           <div class="content">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
+            <a href="https://stackoverflow.com/">StackOverflow</a>&nbsp;
+            <a href="https://github.com/">GitHub</a>&nbsp;
+            <a href="https://www.youtube.com/">YouTube</a>&nbsp;
+            <a href="https://tuna.moe/">清华大学TUNA协会</a>
           </div>
         </article>
       </div>
@@ -44,9 +47,12 @@
           <p class="title">每日更新英文美文</p>
           <p class="subtitle">With even more content</p>
           <div class="content">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam at erat pulvinar, at pulvinar felis blandit. Vestibulum volutpat tellus diam, consequat gravida libero rhoncus ut. Morbi maximus, leo sit amet vehicula eleifend, nunc dui porta orci, quis semper odio felis ut quam.</p>
-            <p>Suspendisse varius ligula in molestie lacinia. Maecenas varius eget ligula a sagittis. Pellentesque interdum, nisl nec interdum maximus, augue diam porttitor lorem, et sollicitudin felis neque sit amet erat. Maecenas imperdiet felis nisi, fringilla luctus felis hendrerit sit amet. Aenean vitae gravida diam, finibus dignissim turpis. Sed eget varius ligula, at volutpat tortor.</p>
-            <p>Integer sollicitudin, tortor a mattis commodo, velit urna rhoncus erat, vitae congue lectus dolor consequat libero. Donec leo ligula, maximus et pellentesque sed, gravida a metus. Cras ullamcorper a nunc ac porta. Aliquam ut aliquet lacus, quis faucibus libero. Quisque non semper leo.</p>
+            <p>
+              There were a sensitivity and a beauty to her that have nothing to do with looks. She was one to be listened to, whose words were so easy to take to heart.
+              It is said that the true nature of being is veiled. The labor of words, the expression of art, the seemingly ceaseless buzz that is human thought all have in common the need to get at what really is so. The hope to draw close to and possess the truth of being can be a feverish one. In some cases it can even be fatal, if pleasure is one's truth and its attainment more important than life itself. In other lives, though, the search for what is truthful gives life.
+              她有着一种与外表无关的灵气和美丽。她的话语轻而易举地征服了人心，她正是我们要聆听的声音。
+              很多人都说人生的真谛是个未知的概念。言词的费力诠释、艺术的着力表现还有人类那似乎永无休止的纷繁思考，三者都苦苦追寻人生的真谛。希望走近以至完全把握存在的真意可以令人十分狂热。有时候，有些人以自己笃信的真理为志趣，追寻真理甚于保全生命，于是就有舍生取义之举。然而，也有另外的一种人生，他们在寻求真谛的过程中灌溉生命。
+            </p>
           </div>
         </div>
       </article>

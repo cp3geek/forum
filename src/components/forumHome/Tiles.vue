@@ -42,7 +42,7 @@
         <p align="right">
           <b-button type="button is-info" outlined @click="allart">全部帖子</b-button>
         </p>
-        <p class="subtitle">推荐帖子</p>
+        <p class="subtitle">热门帖子</p>
 
         <div class="box" v-for="(item, i) in $store.state.info" :key="i">
           <article class="media">

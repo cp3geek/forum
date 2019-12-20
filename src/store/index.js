@@ -51,7 +51,8 @@ export default new Vuex.Store({
           userConcern: 0
         }
       }
-    ]
+    ],
+    totalElements: 16
   },
   mutations,
   actions,

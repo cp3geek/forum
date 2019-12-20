@@ -7,7 +7,9 @@ export default {
     },
 
     getpagemain(state, payload) {
-        state.info = payload;
+        state.info = payload.info;
+        // state.totalPages = payload.totalPages;
+        state.totalElements = payload.totalElements;
     }
     //带参数
     // login1(state, conut) {

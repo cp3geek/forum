@@ -26,9 +26,9 @@
 export default {
   data() {
     return {
-      total: 16,
+      total: 25,
       current: 1,
-      perPage: 3,
+      perPage: 2,
       rangeBefore: 3,
       rangeAfter: 1,
       order: "",
@@ -38,6 +38,9 @@ export default {
       prevIcon: "chevron-left",
       nextIcon: "chevron-right"
     };
+  },
+  mounted() {
+    this.total = this.$store.state.totalElements;
   },
   methods: {
     change(number) {
