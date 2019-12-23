@@ -13,6 +13,7 @@ axios.defaults.baseURL = "http://localhost:9090";
 //         console.log(err);
 //     }
 // );请求拦截
+axios.defaults.withCredentials = true //请求发送cookie
 
 
 axios.interceptors.response.use(res => {

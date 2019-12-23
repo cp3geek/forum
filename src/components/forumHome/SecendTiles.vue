@@ -13,14 +13,17 @@
             <p class="subtitle">Bottom box</p>
           </article>
         </div>
+
         <div class="tile is-parent">
           <article class="tile is-child box">
             <p class="title">放学校风景图</p>
             <b-carousel>
-              <b-carousel-item v-for="(carousel, i) in carousels" :key="i">
-                <section :class="`hero is-medium is-${carousel.color}`">
+              <b-carousel-item v-for="(carousel, i) in 6" :key="i">
+                <section :class="`hero is-medium `">
                   <div class="hero-body has-text-centered">
-                    <h1 class="title">{{carousel.text}}</h1>
+                    <span class="image">
+                      <img :src="getImgUrl(i)" />
+                    </span>
                   </div>
                 </section>
               </b-carousel-item>
@@ -31,7 +34,7 @@
       <div class="tile is-parent">
         <article class="tile is-child box">
           <p class="title">友情链接</p>
-          <p class="subtitle">其他大学论坛等一些技术论坛</p>
+          <hr />
           <div class="content">
             <a href="https://stackoverflow.com/">StackOverflow</a>&nbsp;
             <a href="https://github.com/">GitHub</a>&nbsp;
@@ -63,19 +66,20 @@
 <script>
 export default {
   data() {
-    return {
-      carousels: [
-        { text: "Slide 1", color: "primary" },
-        { text: "Slide 2", color: "info" },
-        { text: "Slide 3", color: "success" },
-        { text: "Slide 4", color: "warning" },
-        { text: "Slide 5", color: "danger" }
-      ]
-    };
+    return {};
+  },
+  methods: {
+    getImgUrl(value) {
+      return `https://picsum.photos/id/43${value}/576/400`;
+    }
   }
 };
 </script>
 
 
 <style scoped>
+.hero.is-medium .hero-body {
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+}
 </style>
