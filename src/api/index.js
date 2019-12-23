@@ -69,4 +69,8 @@ export const getPageMain = pageNum => {
             page: pageNum
         }
     })
+};
+export const getnew = () => {
+    return axios("/getnew")
 }
+

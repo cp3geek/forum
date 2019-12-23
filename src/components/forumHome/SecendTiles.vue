@@ -5,12 +5,58 @@
       <div class="tile">
         <div class="tile is-parent is-vertical">
           <article class="tile is-child box">
-            <p class="title">活跃用户</p>
-            <p class="subtitle">Top box</p>
-          </article>
-          <article class="tile is-child box">
-            <p class="title">最新发布的帖子</p>
-            <p class="subtitle">Bottom box</p>
+            <div class="fuck">
+              <p class="title">最新发布的帖子</p>
+              <div class="box" v-for="(item, i) in info" :key="i">
+                <article class="media">
+                  <figure class="media-left">
+                    <p class="image is-64x64">
+                      <img :src="require(`@/assets/${item.user.userImg}`)" class="size" />
+                      <!-- <img src="../../assets/user1.jpg" alt /> -->
+                    </p>
+                  </figure>
+                  <div class="media-content">
+                    <div class="content">
+                      <p>
+                        <strong>{{ item.user.userName }}</strong>
+                        <br />
+                        {{ item.article.artTitle }}
+                      </p>
+                    </div>
+                    <nav class="level is-mobile">
+                      <div class="level-left">
+                        <a class="level-item">
+                          <span class="icon is-small">
+                            <i class="fab fa-hotjar"></i>
+                          </span>
+                          {{ item.article.artHotNum }}
+                        </a>
+
+                        <a class="level-item">
+                          <span class="icon is-small">
+                            <i class="fas fa-comment-dots"></i>
+                          </span>
+                          {{ item.article.artComNum }}
+                        </a>
+
+                        <a class="level-item">
+                          <span class="icon is-small">
+                            <i class="fas fa-heart"></i>
+                          </span>
+                          {{ item.article.artLikeNum }}
+                        </a>
+                      </div>
+                    </nav>
+                  </div>
+                  <div class="media-right">
+                    <a class="navbar-item" slot="trigger" role="button">
+                      <b-button type="is-info" outlined>查看详情</b-button>
+                    </a>
+                  </div>
+                </article>
+              </div>
+            </div>
+            <hr />
           </article>
         </div>
 
@@ -64,14 +110,54 @@
 </template>
 
 <script>
+import { getnew } from "@/api";
 export default {
   data() {
-    return {};
+    return {
+      info: [
+        {
+          article: {
+            artId: 0,
+            artUserId: 1,
+            artTitle: "",
+            artTypeId: 0,
+            artContent: "",
+            artCommentId: 0,
+            artCreTime: "",
+            artView: "",
+            artComNum: 0,
+            artHotNum: 0,
+            artLikeNum: 0
+          },
+          user: {
+            userId: 0,
+            userPassword: 0,
+            userName: "",
+            userEmail: "",
+            userSex: "",
+            userPhone: "",
+            userStatus: 0,
+            userTime: "",
+            userShow: "",
+            userBlog: "",
+            userImg: "",
+            userFans: 0,
+            userConcern: 0
+          }
+        }
+      ]
+    };
   },
   methods: {
     getImgUrl(value) {
       return `https://picsum.photos/id/43${value}/576/400`;
     }
+  },
+  mounted() {
+    getnew().then(res => {
+      console.log(res);
+      this.info = res.data.content;
+    });
   }
 };
 </script>
@@ -80,6 +166,14 @@ export default {
 <style scoped>
 .hero.is-medium .hero-body {
   padding-top: 0rem;
-  padding-bottom: 0rem;
+  padding-bottom: 3rem;
+}
+.fuck {
+  height: 300px;
+
+  overflow-y: auto;
+}
+.box {
+  padding: 0rem;
 }
 </style>
