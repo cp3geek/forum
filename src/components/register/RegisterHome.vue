@@ -10,8 +10,7 @@
         <SecendStep />
       </b-step-item>
       <b-step-item label="Social" icon="account-plus">
-        <ThirdStep />
-        <img src="../../assets/401.gif" alt />
+        <ThirdStep /><img src=https://wpimg.wallstcn.com/007ef517-bafd-4066-aae4-6883632d9646 alt />
       </b-step-item>
     </b-steps>
   </section>

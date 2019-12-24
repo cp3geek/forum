@@ -72,5 +72,9 @@ export const getPageMain = pageNum => {
 };
 export const getnew = () => {
     return axios("/getnew")
-}
+};
+
+export const gethotuser = () => {
+    return axios("/hotuser")
+};
 

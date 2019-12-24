@@ -27,6 +27,11 @@
   </div>
 </template>
 
+
+<script>
+export default {};
+</script>
+
 <style scoped>
 .first {
   text-align: center;

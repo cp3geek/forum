@@ -93,25 +93,33 @@
     <div class="tile is-parent">
       <article class="tile is-child box">
         <div class="content">
-          <p class="title">活跃用户</p>
-          <div class="card">
+          <p class="title">用户人气榜</p>
+
+          <div class="card" v-for="(user,k) in users" :key="k">
             <div class="card-content">
               <div class="media">
                 <div class="media-left">
                   <figure class="image is-48x48">
-                    <img
-                      src="https://bulma.io/images/placeholders/96x96.png"
-                      alt="Placeholder image"
-                    />
+                    <img :src="require(`@/assets/${user.userImg}`)" class="size" />
+                    <!-- <img src="../../assets/user1.jpg" alt /> -->
                   </figure>
                 </div>
                 <div class="media-content">
-                  <p class="title is-4">用户名</p>
+                  <p class="title is-4" v-if="user.userSex==='女'">
+                    大名：{{user.userName}}
+                    <i class="fas fa-female"></i>
+                  </p>
+
+                  <p class="title is-4" v-else>
+                    大名：{{user.userName}}
+                    <i class="fas fa-male"></i>
+                  </p>
                 </div>
               </div>
 
               <div class="content">
-                个性签名
+                <p>格言：{{user.userShow}}</p>
+
                 <br />
               </div>
             </div>
@@ -124,10 +132,28 @@
 
 <script>
 import { getnew } from "@/api";
+import { gethotuser } from "@/api";
 
 export default {
   data() {
     return {
+      users: [
+        {
+          userId: 0,
+          userPassword: 0,
+          userName: "",
+          userEmail: "",
+          userSex: "",
+          userPhone: "",
+          userStatus: 0,
+          userTime: "",
+          userShow: "",
+          userBlog: "",
+          userImg: "",
+          userFans: 0,
+          userConcern: 0
+        }
+      ],
       info: [
         {
           article: {
@@ -169,8 +195,13 @@ export default {
   },
   mounted() {
     getnew().then(res => {
-      console.log(res);
       this.info = res.data.content;
+    });
+    gethotuser().then(res => {
+      const { data } = res;
+
+      this.users = data.content;
+      console.log(this.users);
     });
   },
   components: {}
