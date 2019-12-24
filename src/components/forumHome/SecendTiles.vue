@@ -119,7 +119,9 @@
 
               <div class="content">
                 <p>格言：{{user.userShow}}</p>
-
+                <i class="far fa-hand-point-right">个人主页</i>
+                <br />粉丝数：
+                <i class="fab fa-gratipay">{{user.userFans}}</i>
                 <br />
               </div>
             </div>
