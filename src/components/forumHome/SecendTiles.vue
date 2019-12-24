@@ -93,15 +93,28 @@
     <div class="tile is-parent">
       <article class="tile is-child box">
         <div class="content">
-          <p class="title">每日更新英文美文</p>
-          <p class="subtitle">With even more content</p>
-          <div class="content">
-            <p>
-              There were a sensitivity and a beauty to her that have nothing to do with looks. She was one to be listened to, whose words were so easy to take to heart.
-              It is said that the true nature of being is veiled. The labor of words, the expression of art, the seemingly ceaseless buzz that is human thought all have in common the need to get at what really is so. The hope to draw close to and possess the truth of being can be a feverish one. In some cases it can even be fatal, if pleasure is one's truth and its attainment more important than life itself. In other lives, though, the search for what is truthful gives life.
-              她有着一种与外表无关的灵气和美丽。她的话语轻而易举地征服了人心，她正是我们要聆听的声音。
-              很多人都说人生的真谛是个未知的概念。言词的费力诠释、艺术的着力表现还有人类那似乎永无休止的纷繁思考，三者都苦苦追寻人生的真谛。希望走近以至完全把握存在的真意可以令人十分狂热。有时候，有些人以自己笃信的真理为志趣，追寻真理甚于保全生命，于是就有舍生取义之举。然而，也有另外的一种人生，他们在寻求真谛的过程中灌溉生命。
-            </p>
+          <p class="title">活跃用户</p>
+          <div class="card">
+            <div class="card-content">
+              <div class="media">
+                <div class="media-left">
+                  <figure class="image is-48x48">
+                    <img
+                      src="https://bulma.io/images/placeholders/96x96.png"
+                      alt="Placeholder image"
+                    />
+                  </figure>
+                </div>
+                <div class="media-content">
+                  <p class="title is-4">用户名</p>
+                </div>
+              </div>
+
+              <div class="content">
+                个性签名
+                <br />
+              </div>
+            </div>
           </div>
         </div>
       </article>
@@ -111,6 +124,7 @@
 
 <script>
 import { getnew } from "@/api";
+
 export default {
   data() {
     return {
@@ -158,7 +172,8 @@ export default {
       console.log(res);
       this.info = res.data.content;
     });
-  }
+  },
+  components: {}
 };
 </script>
 
@@ -172,8 +187,5 @@ export default {
   height: 300px;
 
   overflow-y: auto;
-}
-.box {
-  padding: 0rem;
 }
 </style>
