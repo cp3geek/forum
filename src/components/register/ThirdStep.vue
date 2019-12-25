@@ -37,6 +37,9 @@ import { register } from "@/api";
 export default {
   methods: {
     submit() {
+      //需要改
+      const { registeruser } = this.$store.state.registeruser;
+      console.log(registeruser);
       register(this.$store.state.registeruser).then(res => {
         const { data } = res;
         console.log(data);
