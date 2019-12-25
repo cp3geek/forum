@@ -77,8 +77,8 @@ export const getnew = () => {
 export const gethotuser = () => {
     return axios("/hotuser")
 };
-export const register = (User) => {
+export const register = (userName, userPassword, userShow, userEmail, userPhone, userSex) => {
 
-    return axios.post("/register", Qs.stringify({ user: User }))
+    return axios.post("/register", Qs.stringify({ userName, userPassword, userShow, userEmail, userPhone, userSex }))
     //有bug，需要改
 }

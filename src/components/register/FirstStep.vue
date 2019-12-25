@@ -21,12 +21,13 @@
         ></b-input>
       </b-field>
     </section>
-    <b-button type="is-info" @click="first">保存</b-button>
+    <b-button type="is-info" outlined rounded @click="first">保存</b-button>
   </div>
 </template>
 
 
 <script>
+import { SnackbarProgrammatic as Snackbar } from "buefy";
 export default {
   data() {
     return {
@@ -42,6 +43,28 @@ export default {
         userEmail: this.userEmail,
         userPassword: this.userPassword
       });
+      if (
+        this.$store.state.registeruser.userName != "" &&
+        this.$store.state.registeruser.userEmail != "" &&
+        this.$store.state.registeruser.userPassword != ""
+      ) {
+        Snackbar.open("保存成功");
+      } else {
+        this.$buefy.snackbar.open({
+          duration: 5000,
+          message: "请填写完整信息",
+          type: "is-danger",
+          position: "is-bottom-left",
+          actionText: "确定",
+          queue: false,
+          onAction: () => {
+            this.$buefy.toast.open({
+              message: "信息填写完整再点击保存",
+              queue: false
+            });
+          }
+        });
+      }
     }
   }
 };

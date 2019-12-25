@@ -35,14 +35,31 @@
 <script>
 import { register } from "@/api";
 export default {
+  data() {
+    return {};
+  },
   methods: {
     submit() {
-      //需要改
-      const { registeruser } = this.$store.state.registeruser;
-      console.log(registeruser);
-      register(this.$store.state.registeruser).then(res => {
+      console.log(this.$store.state.registeruser.userName);
+      const userName = this.$store.state.registeruser.userName;
+      const userPassword = this.$store.state.registeruser.userPassword;
+      const userShow = this.$store.state.registeruser.userShow;
+      const userEmail = this.$store.state.registeruser.userEmail;
+      const userPhone = this.$store.state.registeruser.userPhone;
+      const userSex = this.$store.state.registeruser.userSex;
+
+      register(
+        userName,
+        userPassword,
+        userShow,
+        userEmail,
+        userPhone,
+        userSex
+      ).then(res => {
         const { data } = res;
-        console.log(data);
+        if (data === 200) {
+          this.$router.push("/");
+        }
       });
     }
   }
