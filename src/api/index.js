@@ -79,4 +79,5 @@ export const gethotuser = () => {
 };
 export const register = (User) => {
     return axios.post("/register", Qs.stringify({ User }))
+    //有bug
 }
