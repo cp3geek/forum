@@ -52,7 +52,15 @@ export default new Vuex.Store({
         }
       }
     ],
-    totalElements: 16
+    totalElements: 16,
+    registeruser: {
+      userName: "",
+      userEmail: "",
+      userSex: "",
+      userShow: "",
+      userPhone: "",
+      userPassword: ""
+    }
   },
   mutations,
   actions,

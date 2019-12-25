@@ -1,15 +1,15 @@
 <template>
   <section>
     <b-steps type="is-info">
-      <b-step-item label="Account" icon="account-key">
+      <b-step-item label="第一步" icon="account-key">
         <FirstStep />
 
         <img src="../../assets/401.gif" alt />
       </b-step-item>
-      <b-step-item label="Profile" icon="account">
+      <b-step-item label="第二步" icon="account">
         <SecendStep />
       </b-step-item>
-      <b-step-item label="Social" icon="account-plus">
+      <b-step-item label="第三步" icon="account-plus">
         <ThirdStep /><img src=https://wpimg.wallstcn.com/007ef517-bafd-4066-aae4-6883632d9646 alt />
       </b-step-item>
     </b-steps>

@@ -1,35 +1,50 @@
 <template>
   <div class="first">
     <section>
-      <b-field label="用户名" type="is-success" message="This username is available">
-        <b-input value="johnsilver" maxlength="30"></b-input>
+      <b-field label="用户名">
+        <b-input v-model="userName" placeholder="username" maxlength="30"></b-input>
+        <!-- required pattern="[A-Za-z][A-Za-z0-9_]{4,14}"
+        validation-message="用户名不能为空!"-->
       </b-field>
 
-      <b-field label="邮箱" type="is-danger" message="This email is invalid">
-        <b-input type="email" value="john@" maxlength="30"></b-input>
+      <b-field label="邮箱">
+        <b-input type="email" v-model="userEmail" placeholder="Your email" required></b-input>
       </b-field>
 
-      <b-field
-        label="密码"
-        type="is-warning"
-        :message="['Password is too short', 'Password must have at least 8 characters']"
-      >
-        <b-input value="123" type="password" maxlength="30"></b-input>
-      </b-field>
-
-      <b-field label="Subject">
-        <b-select placeholder="Select a subject">
-          <option value="1">Option 1</option>
-          <option value="2">Option 2</option>
-        </b-select>
+      <b-field label="密码">
+        <b-input
+          type="password"
+          password-reveal
+          placeholder="Your password"
+          required
+          v-model="userPassword"
+        ></b-input>
       </b-field>
     </section>
+    <b-button type="is-info" @click="first">保存</b-button>
   </div>
 </template>
 
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      userName: "",
+      userEmail: "",
+      userPassword: ""
+    };
+  },
+  methods: {
+    first() {
+      this.$store.commit("first", {
+        userName: this.userName,
+        userEmail: this.userEmail,
+        userPassword: this.userPassword
+      });
+    }
+  }
+};
 </script>
 
 <style scoped>

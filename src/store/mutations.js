@@ -10,7 +10,20 @@ export default {
         state.info = payload.info;
         // state.totalPages = payload.totalPages;
         state.totalElements = payload.totalElements;
+    },
+
+    first(state, payload) {
+        state.registeruser.userName = payload.userName;
+        state.registeruser.userPassword = payload.userPassword
+        state.registeruser.userEmail = payload.userEmail
+    },
+
+    secend(state, payload) {
+        state.registeruser.userPhone = payload.userPhone;
+        state.registeruser.userSex = payload.userSex;
+        state.registeruser.userShow = payload.userShow;
     }
+
     //带参数
     // login1(state, conut) {
     //   state.isLogin = conut;

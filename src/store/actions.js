@@ -1,4 +1,5 @@
 import { getPageMain } from "@/api"
+
 export default {
     //context:上下文，actions中的默认参数，理解成store对象
     aLogin(context, payload) {
@@ -28,7 +29,10 @@ export default {
                 info: res.data.content
             })
         }).catch()
-    }
+    },
+
+
+
 
 
 
