@@ -203,7 +203,6 @@ export default {
       const { data } = res;
 
       this.users = data.content;
-      console.log(this.users);
     });
   },
   components: {}

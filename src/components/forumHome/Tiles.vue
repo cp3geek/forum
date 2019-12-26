@@ -168,7 +168,14 @@ export default {
       this.$router.push("/allarticlehome");
     },
     details(i) {
-      console.log(i);
+      const detaildata = this.$store.state.info[i];
+      console.log(detaildata);
+      this.$router.push({
+        path: "/details",
+        query: {
+          detaildata: detaildata
+        }
+      });
     }
   },
   components: {

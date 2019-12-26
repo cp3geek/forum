@@ -40,7 +40,14 @@ const routes = [
     component: () => import("../components/register/RegisterHome")
   },
 
-  { path: "*", component: NotFoundComponent }
+  {
+    path: "*", component: NotFoundComponent
+  },
+  {
+    path: "/details",
+    name: "Details",
+    component: () => import("../components/articlehome/Details")
+  },
 ];
 
 const router = new VueRouter({
