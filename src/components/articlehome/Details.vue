@@ -76,10 +76,9 @@ export default {};
   height: 20px;
 }
 .Wrapper {
-  /* background-color: antiquewhite; */
+  background-color: #e2e2e2;
   background-repeat: repeat-x, repeat-x;
   text-align: center;
-  background-image: url("../../assets/下载.jpg");
 }
 .content {
   min-width: 600px;
@@ -103,8 +102,7 @@ export default {};
   display: block;
 }
 .box {
-  background-color: var(--box-background-color);
-  border-radius: var(--box-border-radius);
+  background-color: #fff;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
   border-bottom: 1px solid #e2e2e2;
 }
@@ -160,5 +158,13 @@ export default {};
 }
 .small {
   font-size: smaller;
+}
+:root {
+  --box-background-color: #fff;
+  --box-background-alt-color: #f9f9f9;
+  --box-background-hover-color: #fafafa;
+  --box-foreground-color: #000;
+  --box-border-color: #e2e2e2;
+  --box-border-radius: 3px;
 }
 </style>
