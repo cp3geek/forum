@@ -79,6 +79,7 @@ export default {};
   /* background-color: antiquewhite; */
   background-repeat: repeat-x, repeat-x;
   text-align: center;
+  background-image: url("../../assets/下载.jpg");
 }
 .content {
   min-width: 600px;
