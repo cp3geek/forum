@@ -87,7 +87,7 @@
             </div>
             <div class="media-right">
               <a class="navbar-item" slot="trigger" role="button">
-                <b-button type="is-info" outlined>查看详情</b-button>
+                <b-button type="is-info" outlined @click="details(i)">查看详情</b-button>
               </a>
             </div>
           </article>
@@ -166,6 +166,9 @@ export default {
   methods: {
     allart() {
       this.$router.push("/allarticlehome");
+    },
+    details(i) {
+      console.log(i);
     }
   },
   components: {

@@ -48,19 +48,30 @@ export default {
       const userPhone = this.$store.state.registeruser.userPhone;
       const userSex = this.$store.state.registeruser.userSex;
 
-      register(
-        userName,
-        userPassword,
-        userShow,
-        userEmail,
-        userPhone,
-        userSex
-      ).then(res => {
-        const { data } = res;
-        if (data === 200) {
-          this.$router.push("/");
-        }
-      });
+      if (
+        userName === "" &&
+        userPassword === "" &&
+        userShow === "" &&
+        userEmail === "" &&
+        userPhone === "" &&
+        userSex === ""
+      ) {
+        alert("确定信息填写完整了吗？");
+      } else {
+        register(
+          userName,
+          userPassword,
+          userShow,
+          userEmail,
+          userPhone,
+          userSex
+        ).then(res => {
+          const { data } = res;
+          if (data === 200) {
+            this.$router.push("/");
+          }
+        });
+      }
     }
   }
 };
