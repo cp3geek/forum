@@ -49,7 +49,7 @@
             </div>
             <div class="media-right">
               <a class="navbar-item" slot="trigger" role="button">
-                <b-button type="is-info" outlined>查看详情</b-button>
+                <b-button type="is-info" outlined @click="detail(index)">查看详情</b-button>
               </a>
             </div>
           </article>
@@ -179,6 +179,15 @@ export default {
           this.contents = data;
         })
         .catch(() => {});
+    },
+    detail(index) {
+      const detaildata = this.contents[index];
+      this.$router.push({
+        path: "/details",
+        query: {
+          detaildata: JSON.stringify(detaildata)
+        }
+      });
     }
   }
 };

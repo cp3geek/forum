@@ -45,7 +45,7 @@
                 <input class="input" type="text" placeholder="Find a post" />
               </p>
               <p class="control">
-                <button class="button">Search</button>
+                <button class="button">搜索</button>
               </p>
             </div>
           </div>

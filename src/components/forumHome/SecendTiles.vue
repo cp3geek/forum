@@ -50,7 +50,7 @@
                   </div>
                   <div class="media-right">
                     <a class="navbar-item" slot="trigger" role="button">
-                      <b-button type="is-info" outlined>查看详情</b-button>
+                      <b-button type="is-info" @click="detail(i)">查看详情</b-button>
                     </a>
                   </div>
                 </article>
@@ -193,6 +193,15 @@ export default {
   methods: {
     getImgUrl(value) {
       return `https://picsum.photos/id/43${value}/576/400`;
+    },
+    detail(i) {
+      const detaildata = this.info[i];
+      this.$router.push({
+        path: "/details",
+        query: {
+          detaildata: JSON.stringify(detaildata)
+        }
+      });
     }
   },
   mounted() {
