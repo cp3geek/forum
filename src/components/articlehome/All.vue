@@ -148,6 +148,7 @@ export default {
     };
   },
   mounted() {
+    //改成无限滚动
     getAllArticle()
       .then(res => {
         const { data } = res;
@@ -173,6 +174,7 @@ export default {
         .catch(() => {});
     },
     getAll() {
+      //改成无限滚动
       getAllArticle()
         .then(res => {
           const { data } = res;
