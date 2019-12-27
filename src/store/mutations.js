@@ -22,6 +22,10 @@ export default {
         state.registeruser.userPhone = payload.userPhone;
         state.registeruser.userSex = payload.userSex;
         state.registeruser.userShow = payload.userShow;
+    },
+
+    details(state, info) {
+        state.info = info
     }
 
     //带参数

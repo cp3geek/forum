@@ -32,22 +32,109 @@
     <div class="Wrapper">
       <div class="content">
         <div class="Leftbar"></div>
-        <div class="Rightbar">随便放点东西</div>
+        <div class="Rightbar">
+          <div class="sep20"></div>
+          <div class="box">
+            <div class="cell">
+              <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                <tbody>
+                  <tr>
+                    <td width="48" valign="top">
+                      <a href="/member/chp3">
+                        <img
+                          src="//cdn.v2ex.com/gravatar/873548b247e76e0e16ac5f8280c0004c?s=48&amp;d=retro"
+                          class="avatar"
+                          border="0"
+                          align="default"
+                          style="max-width: 48px; max-height: 48px;"
+                        />
+                      </a>
+                    </td>
+                    <td width="10" valign="top"></td>
+                    <td width="auto" align="left">
+                      <span class="bigger">
+                        <a href="/member/chp3">已登录的用户名，暂时占位</a>
+                      </span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="sep10"></div>
+              <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                <tbody>
+                  <tr>
+                    <td width="33%" align="center">
+                      <a href="/my/nodes" class="dark" style="display: block;">
+                        <span class="bigger">0</span>
+                        <div class="sep3"></div>
+                        <span class="fade">粉丝数</span>
+                      </a>
+                    </td>
+                    <td
+                      width="34%"
+                      style="border-left: 1px solid rgba(100, 100, 100, 0.4); border-right: 1px solid rgba(100, 100, 100, 0.4);"
+                      align="center"
+                    >
+                      <a href="/my/topics" class="dark" style="display: block;">
+                        <span class="bigger">0</span>
+                        <div class="sep3"></div>
+                        <span class="fade">你的帖子</span>
+                      </a>
+                    </td>
+                    <td width="33%" align="center">
+                      <a href="/my/following" class="dark" style="display: block;">
+                        <span class="bigger">0</span>
+                        <div class="sep3"></div>
+                        <span class="fade">你关注的人数</span>
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="cell" id="member-activity">
+              <div class="member-activity-bar">
+                <div class="member-activity-start" style="width: 15px;"></div>
+              </div>
+            </div>
+            <div class="cell" style="padding: 5px;">
+              <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                <tbody>
+                  <tr>
+                    <td width="28">
+                      <a href="/new">
+                        <img src width="28" border="0" />
+                      </a>
+                    </td>
+                    <td width="10"></td>
+                    <td width="auto" valign="middle" align="left">
+                      <a href="/new">在此贴发表评论</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="inner">
+              <div class="fr" id="money" style="margin: -3px 0px 0px 0px"></div>
+              <a href="#" class="fade">去发帖</a>
+            </div>
+          </div>
+        </div>
         <div class="Main">
           <div class="sep20"></div>
           <div class="box" style="border-bottom:0px;">
             <div class="header">
               <div class="fr">
-                <img
+                <!-- <img
                   :src="require(`../../assets/${this.$route.query.detaildata.user.userImg}`)"
                   class="size"
-                />
+                />-->
               </div>
               <div class="sep10"></div>
-              <h1>{{this.$route.query.detaildata.article.artTitle}}</h1>
-              <small class="gray">{{this.$route.query.detaildata.user.userName}}</small>
+              <h1>{{info.article.artTitle}}</h1>
+              <small class="gray">{{info.user.userName}}</small>
             </div>
-            <div class="cell">{{this.$route.query.detaildata.article.artContent}}</div>
+            <div class="cell">{{info.article.artContent}}</div>
           </div>
           <div class="sep20"></div>
           <div class="box">
@@ -109,7 +196,49 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      info: [
+        {
+          article: {
+            artId: 0,
+            artUserId: 1,
+            artTitle: "",
+            artTypeId: 0,
+            artContent: "",
+            artCommentId: 0,
+            artCreTime: "",
+            artView: "",
+            artComNum: 0,
+            artHotNum: 0,
+            artLikeNum: 0
+          },
+          user: {
+            userId: 0,
+            userPassword: 0,
+            userName: "",
+            userEmail: "",
+            userSex: "",
+            userPhone: "",
+            userStatus: 0,
+            userTime: "",
+            userShow: "",
+            userBlog: "",
+            userImg: "",
+            userFans: 0,
+            userConcern: 0
+          }
+        }
+      ]
+    };
+  },
+  created() {
+    this.info = JSON.parse(this.$route.query.detaildata);
+  }
+
+  //需要将传过来的数据存入session中（关闭浏览器才会清除数据）localstage也行，cookies也行，我选择session，不然一刷新数据就会丢失，有空再更新的，//不采用这种方式，vue的router使用query传参，刷新不会丢失数据，登录状态的保存再使用sessionStorge
+};
 </script>
 
 <style scoped>

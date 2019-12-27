@@ -173,7 +173,7 @@ export default {
       this.$router.push({
         path: "/details",
         query: {
-          detaildata: detaildata
+          detaildata: JSON.stringify(detaildata)
         }
       });
     }

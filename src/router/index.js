@@ -1,8 +1,5 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-// import ForumHome from "../components/forumHome/ForumHome.vue";
-// import LoginBackStage from "../components/backstagehome/LoginBackStage.vue";
-// import BackStageHome from "../components/backstagehome/BackStageHome.vue";
 import NotFoundComponent from "../components/NotFoundComponent.vue";
 
 Vue.use(VueRouter);
@@ -31,10 +28,7 @@ const routes = [
     path: "/allarticlehome",
     component: () => import("../components/articlehome/Allarticlehome")
   },
-  {
-    path: "/commenthome",
-    component: () => import("../components/commenthome/CommentHome")
-  },
+
   {
     path: "/registerhome",
     component: () => import("../components/register/RegisterHome")
