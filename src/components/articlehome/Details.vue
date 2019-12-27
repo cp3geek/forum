@@ -125,10 +125,7 @@
           <div class="box" style="border-bottom:0px;">
             <div class="header">
               <div class="fr">
-                <!-- <img
-                  :src="require(`../../assets/${this.$route.query.detaildata.user.userImg}`)"
-                  class="size"
-                />-->
+                <img :src="require(`../../assets/${info.user.userImg}`)" class="size" />
               </div>
               <div class="sep10"></div>
               <h1>{{info.article.artTitle}}</h1>
