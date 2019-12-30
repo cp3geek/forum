@@ -151,8 +151,7 @@ export default {
     //改成无限滚动
     getAllArticle()
       .then(res => {
-        const { data } = res;
-        this.contents = data;
+        this.contents = res.data.content;
       })
       .catch(() => {});
 
@@ -174,7 +173,6 @@ export default {
         .catch(() => {});
     },
     getAll() {
-      //改成无限滚动
       getAllArticle()
         .then(res => {
           const { data } = res;
