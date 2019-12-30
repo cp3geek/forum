@@ -6,54 +6,68 @@
           <button class="button is-info" @click="getAll">全部帖子</button>
         </p>
 
-        <div class="box" v-for="(content,index) in contents" :key="index">
-          <article class="media">
-            <figure class="media-left">
-              <p class="image is-64x64">
-                <img :src="require(`../../assets/${content.user.userImg}`)" class="size" />
-              </p>
-            </figure>
-            <div class="media-content">
-              <div class="content">
-                <p>
-                  <strong>发帖人用户名:{{content.user.userName}}</strong>
-
-                  <br />
-                  发帖标题:{{content.article.artTitle}}
+        <ul
+          v-infinite-scroll="loadMore"
+          infinite-scroll-disabled="busy"
+          infinite-scroll-distance="limit"
+          style="height: 100vh;
+    overflow-y: auto;"
+        >
+          <div class="box" v-for="(content,index) in contents" :key="index">
+            <article class="media">
+              <figure class="media-left">
+                <p class="image is-64x64">
+                  <img :src="require(`../../assets/${content.user.userImg}`)" class="size" />
                 </p>
-              </div>
-              <nav class="level is-mobile">
-                <div class="level-left">
-                  <a class="level-item">
-                    <span class="icon is-small">
-                      <i class="fab fa-hotjar"></i>
-                    </span>
-                    {{content.article.artHotNum}}
-                  </a>
+              </figure>
+              <div class="media-content">
+                <div class="content">
+                  <p>
+                    <strong>发帖人用户名:{{content.user.userName}}</strong>
 
-                  <a class="level-item">
-                    <span class="icon is-small">
-                      <i class="fas fa-comment-dots"></i>
-                    </span>
-                    {{content.article.artComNum}}
-                  </a>
-
-                  <a class="level-item">
-                    <span class="icon is-small">
-                      <i class="fas fa-heart"></i>
-                    </span>
-                    {{content.article.artLikeNum}}
-                  </a>
+                    <br />
+                    发帖标题:{{content.article.artTitle}}
+                  </p>
                 </div>
-              </nav>
-            </div>
-            <div class="media-right">
-              <a class="navbar-item" slot="trigger" role="button">
-                <b-button type="is-info" outlined @click="detail(index)">查看详情</b-button>
-              </a>
-            </div>
-          </article>
-        </div>
+                <nav class="level is-mobile">
+                  <div class="level-left">
+                    <a class="level-item">
+                      <span class="icon is-small">
+                        <i class="fab fa-hotjar"></i>
+                      </span>
+                      {{content.article.artHotNum}}
+                    </a>
+
+                    <a class="level-item">
+                      <span class="icon is-small">
+                        <i class="fas fa-comment-dots"></i>
+                      </span>
+                      {{content.article.artComNum}}
+                    </a>
+
+                    <a class="level-item">
+                      <span class="icon is-small">
+                        <i class="fas fa-heart"></i>
+                      </span>
+                      {{content.article.artLikeNum}}
+                    </a>
+                  </div>
+                </nav>
+              </div>
+              <div class="media-right">
+                <a class="navbar-item" slot="trigger" role="button">
+                  <b-button type="is-info" outlined @click="detail(index)">查看详情</b-button>
+                </a>
+              </div>
+            </article>
+          </div>
+          <div v-if="flag===1">没有更多了</div>
+
+          <b-notification :closable="false" v-if="flag===2">
+            <div style="text-align:center">正在加载</div>
+            <b-loading :is-full-page="isFullPage" :active.sync="isLoading" :can-cancel="true"></b-loading>
+          </b-notification>
+        </ul>
       </article>
     </div>
     <div class="tile is-parent">
@@ -104,7 +118,14 @@ import { getArticleByTypeId } from "@/api";
 export default {
   data() {
     return {
+      isLoading: false,
+      isFullPage: false,
       btnFlag: false,
+      busy: false,
+      limit: 20,
+      flag: 0,
+
+      // test: [],
       contents: [
         {
           article: {
@@ -137,6 +158,7 @@ export default {
           }
         }
       ],
+      test: [],
       ArticleTypes: [
         {
           typeId: 0,
@@ -144,18 +166,17 @@ export default {
           typeName: "",
           typeDesc: ""
         }
-      ]
+      ],
+      number: 1,
+      totalPages: 3
     };
   },
   mounted() {
-    //改成无限滚动
     getAllArticle()
       .then(res => {
-        const { data } = res;
-        this.contents = data;
+        this.contents = res.data.content;
       })
       .catch(() => {});
-
     getAllArticleType()
       .then(res => {
         const { data } = res;
@@ -165,6 +186,30 @@ export default {
   },
 
   methods: {
+    loadMore() {
+      console.log("scrolling");
+
+      this.busy = true;
+      if (this.number - 1 === this.totalPages) {
+        this.flag = 1;
+      } else {
+        this.flag = 2;
+        this.isLoading = true;
+
+        setTimeout(() => {
+          getAllArticle(this.number++)
+            .then(res => {
+              const append = res.data.content;
+              this.contents = this.contents.concat(append);
+
+              this.busy = false;
+            })
+            .catch(() => {
+              this.busy = false;
+            });
+        }, 1000);
+      }
+    },
     getTypeArticle(typeId) {
       getArticleByTypeId(typeId)
         .then(res => {
@@ -174,11 +219,9 @@ export default {
         .catch(() => {});
     },
     getAll() {
-      //改成无限滚动
       getAllArticle()
         .then(res => {
-          const { data } = res;
-          this.contents = data;
+          this.contents = res.data.content;
         })
         .catch(() => {});
     },
@@ -191,6 +234,9 @@ export default {
         }
       });
     }
+  },
+  created() {
+    // this.loadMore();
   }
 };
 </script>
@@ -199,5 +245,8 @@ export default {
 .size {
   width: 64px;
   height: 64px;
+}
+.fuck {
+  text-align: center;
 }
 </style>

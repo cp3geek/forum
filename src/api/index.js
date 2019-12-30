@@ -46,8 +46,8 @@ export const userLogin = (email, password) => {
     );
 };
 
-export const getAllArticle = () => {
-    return axios.post("/pagearticle");
+export const getAllArticle = (page) => {
+    return axios.post("/pagearticle", Qs.stringify({ page }));
 };
 
 export const getAllArticleType = () => {
