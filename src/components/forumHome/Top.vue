@@ -94,8 +94,12 @@
         </div>
       </div>
       <div v-else>
-        欢迎{{$store.state.user.userName}}登录
-        <button @click="logout">登出</button>
+        <div>
+          <i class="far fa-address-card">{{$store.state.user.userName}}</i>
+        </div>
+        <div @click="logout">
+          <i class="fas fa-sign-out-alt">登出</i>
+        </div>
       </div>
     </div>
   </nav>
