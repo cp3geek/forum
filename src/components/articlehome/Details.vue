@@ -11,28 +11,13 @@
       </template>
       <template slot="start">
         <b-navbar-item href="#">Home</b-navbar-item>
-        <b-navbar-item href="#">Documentation</b-navbar-item>
-        <b-navbar-dropdown label="Info">
-          <b-navbar-item href="#">About</b-navbar-item>
-          <b-navbar-item href="#">Contact</b-navbar-item>
-        </b-navbar-dropdown>
-      </template>
-
-      <template slot="end">
-        <b-navbar-item tag="div">
-          <div class="buttons">
-            <a class="button is-primary">
-              <strong>Sign up</strong>
-            </a>
-            <a class="button is-light">Log in</a>
-          </div>
-        </b-navbar-item>
       </template>
     </b-navbar>
     <div class="Wrapper">
       <div class="content">
         <div class="Leftbar"></div>
-        <div class="Rightbar">
+
+        <div class="Rightbar" v-if="$store.state.isLogin">
           <div class="sep20"></div>
           <div class="box">
             <div class="cell">
@@ -40,9 +25,9 @@
                 <tbody>
                   <tr>
                     <td width="48" valign="top">
-                      <a href="/member/chp3">
+                      <a href="#">
                         <img
-                          src="//cdn.v2ex.com/gravatar/873548b247e76e0e16ac5f8280c0004c?s=48&amp;d=retro"
+                          :src="require(`@/assets/${$store.state.user.userImg}`)"
                           class="avatar"
                           border="0"
                           align="default"
@@ -53,7 +38,7 @@
                     <td width="10" valign="top"></td>
                     <td width="auto" align="left">
                       <span class="bigger">
-                        <a href="/member/chp3">已登录的用户名，暂时占位</a>
+                        <a href="/member/chp3">{{$store.state.user.userName}}</a>
                       </span>
                     </td>
                   </tr>
@@ -64,8 +49,8 @@
                 <tbody>
                   <tr>
                     <td width="33%" align="center">
-                      <a href="/my/nodes" class="dark" style="display: block;">
-                        <span class="bigger">0</span>
+                      <a href="#" class="dark" style="display: block;">
+                        <span class="bigger">{{$store.state.user.userFans}}</span>
                         <div class="sep3"></div>
                         <span class="fade">粉丝数</span>
                       </a>
@@ -75,7 +60,7 @@
                       style="border-left: 1px solid rgba(100, 100, 100, 0.4); border-right: 1px solid rgba(100, 100, 100, 0.4);"
                       align="center"
                     >
-                      <a href="/my/topics" class="dark" style="display: block;">
+                      <a href="#" class="dark" style="display: block;">
                         <span class="bigger">0</span>
                         <div class="sep3"></div>
                         <span class="fade">你的帖子</span>
@@ -83,7 +68,7 @@
                     </td>
                     <td width="33%" align="center">
                       <a href="/my/following" class="dark" style="display: block;">
-                        <span class="bigger">0</span>
+                        <span class="bigger">{{$store.state.user.userConcern}}</span>
                         <div class="sep3"></div>
                         <span class="fade">你关注的人数</span>
                       </a>
@@ -119,6 +104,26 @@
               <a href="#" class="fade">去发帖</a>
             </div>
           </div>
+        </div>
+        <div id="Rightbar" v-else>
+          <div class="sep20"></div>
+          <div class="box">
+            <div class="cell">
+              <strong>Say what u want 2 say</strong>
+              <div class="sep5"></div>
+              <span class="fade">这是一个关于分享和探索的地方</span>
+            </div>
+            <div class="inner">
+              <div class="sep5"></div>
+              <div align="center">
+                <a href="/signup" class="super normal button">现在注册</a>
+                <div class="sep5"></div>
+                <div class="sep10"></div>已注册用户请 &nbsp;
+                <a href="/signin">登录</a>
+              </div>
+            </div>
+          </div>
+          <div class="sep20"></div>
         </div>
         <div class="Main">
           <div class="sep20"></div>
@@ -239,6 +244,15 @@ export default {
 </script>
 
 <style scoped>
+#Rightbar {
+  width: 270px;
+  float: right;
+  margin-right: 20px;
+}
+.bigger {
+  text-align: center;
+  font-size: 20px;
+}
 .sep20 {
   height: 20px;
 }

@@ -93,7 +93,10 @@
           </div>
         </div>
       </div>
-      <div v-else>欢迎{{user.userName}}登录</div>
+      <div v-else>
+        欢迎{{$store.state.user.userName}}登录
+        <button @click="logout">登出</button>
+      </div>
     </div>
   </nav>
 </template>
@@ -105,25 +108,13 @@ export default {
   data() {
     return {
       email: "",
-      password: "",
-      user: {
-        userName: "",
-        userId: "",
-        userEmail: "",
-        userImg: "",
-        userPhone: "",
-        userSex: "",
-        userFans: "",
-        userTime: "",
-        userPassword: "",
-        userStatus: "",
-        userShow: "",
-        userConcern: "",
-        userBlog: ""
-      }
+      password: ""
     };
   },
   methods: {
+    logout() {
+      this.$store.commit("logout");
+    },
     userhome() {
       this.$router.push("/userhome");
     },
@@ -135,6 +126,7 @@ export default {
           console.log(data);
           if (data != null) {
             this.$store.dispatch("aLogin", {
+              user: data,
               message: "牛逼",
               success: () => {
                 console.log("欢迎您");
