@@ -19,7 +19,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
 
   state: {
-    isLogin: window.localStorage.getItem('isLogin' || '[]') == null ? false : true,
+    isLogin: window.localStorage.getItem('isLogin' || '[]') == null ? '' : true,
     user: {
       userName: window.localStorage.getItem('user' || '[]') == null ? '' : JSON.parse(window.localStorage.getItem('user' || '[]')).userName,
       userId: window.localStorage.getItem('user' || '[]') == null ? '' : JSON.parse(window.localStorage.getItem('user' || '[]')).userId,

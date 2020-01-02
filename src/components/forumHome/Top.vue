@@ -93,7 +93,7 @@
           </div>
         </div>
       </div>
-      <div v-else>
+      <div v-else-if="$store.state.isLogin">
         <div>
           <i class="far fa-address-card">{{$store.state.user.userName}}</i>
         </div>

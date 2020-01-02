@@ -9,9 +9,9 @@ export default {
         window.localStorage.setItem('isLogin', true)
     },
     logout(state) {
-        state.isLogin = false;
-        window.localStorage.setItem('isLogin', false);
+        state.isLogin = '';
         window.localStorage.removeItem('user')
+        window.localStorage.removeItem('isLogin')
     },
 
     getpagemain(state, payload) {

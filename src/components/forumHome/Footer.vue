@@ -11,6 +11,24 @@
         >CC BY NC SA 4.0</a>.
       </p>
     </div>
+    {{time}}
   </footer>
 </template>
+
+
+<script>
+// 2019-04-12
+export default {
+  data() {
+    return {
+      time: ""
+    };
+  },
+  created() {
+    this.$moment().format("yyyy-MM-dd");
+    let dateValue = this.$moment(new Date()).format("YYYY-MM-DD"); //
+    this.time = dateValue;
+  }
+};
+</script>
 
