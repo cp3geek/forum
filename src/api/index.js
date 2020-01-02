@@ -80,5 +80,8 @@ export const gethotuser = () => {
 export const register = (userName, userPassword, userShow, userEmail, userPhone, userSex) => {
 
     return axios.post("/register", Qs.stringify({ userName, userPassword, userShow, userEmail, userPhone, userSex }))
-    //有bug，需要改
+
+};
+export const getcomment = (artId) => {
+    return axios.post("/getComment", Qs.stringify({ artId }))
 }

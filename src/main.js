@@ -16,6 +16,7 @@ import moment from 'moment'//导入文件
 
 // Vue.use(infiniteScroll)
 Vue.prototype.$moment = moment;//赋值使用
+moment.locale('zh-cn')
 Vue.use(Buefy);
 Vue.use(ElementUI);
 Vue.config.productionTip = false;

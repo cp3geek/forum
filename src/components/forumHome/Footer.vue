@@ -25,8 +25,7 @@ export default {
     };
   },
   created() {
-    this.$moment().format("yyyy-MM-dd");
-    let dateValue = this.$moment(new Date()).format("YYYY-MM-DD"); //
+    let dateValue = this.$moment(new Date()).format("YYYY-MM-DD hh:mm:ss");
     this.time = dateValue;
   }
 };

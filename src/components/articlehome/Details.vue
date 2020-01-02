@@ -10,7 +10,7 @@
         </b-navbar-item>
       </template>
       <template slot="start">
-        <b-navbar-item href="#">Home</b-navbar-item>
+        <b-navbar-item href="#">首页</b-navbar-item>
       </template>
     </b-navbar>
     <div class="Wrapper">
@@ -140,26 +140,28 @@
           </div>
           <div class="sep20"></div>
           <div class="box">
-            <div class="cell">回复数量</div>
+            <div class="cell">回复</div>
             <div class="fuck"></div>
-            <div class="cell">
+            <div class="cell" v-for="(c, index) in comments" :key="index">
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tbody>
                   <tr>
-                    <td width="48" valign="top" align="center">评论人头像</td>
+                    <td width="48" valign="top" align="center">
+                      <img :src="require(`@/assets/${c.user.userImg}`)" />
+                    </td>
                     <td width="10" valign="top"></td>
                     <td width="auto" valign="top" align="left">
                       <div class="fr">
                         &nbsp; &nbsp;
-                        <span class="no">1</span>
+                        <span class="no"></span>
                       </div>
                       <div class="sep3"></div>
                       <strong>
-                        <a href="#" class="dark">评论的用户</a>
+                        <a href="#" class="dark">{{c.user.userName}}</a>
                       </strong>&nbsp; &nbsp;
-                      <span class="ago">16 小时 23 分钟前</span>
+                      <span class="ago">{{c.comment.comTime}}</span>
                       <div class="sep5"></div>
-                      <div class="reply_content">测试评论内容</div>
+                      <div class="reply_content">{{c.comment.comContent}}</div>
                     </td>
                   </tr>
                 </tbody>
@@ -198,6 +200,7 @@
 </template>
 
 <script>
+import { getcomment } from "@/api";
 export default {
   data() {
     return {
@@ -232,14 +235,54 @@ export default {
             userConcern: 0
           }
         }
+      ],
+      comments: [
+        {
+          comment: {
+            comId: 0,
+            comArtId: 0,
+            comContent: "",
+            comTime: "",
+            comUserId: ""
+          },
+
+          user: {
+            userId: 0,
+            userPassword: 0,
+            userName: "",
+            userEmail: "",
+            userSex: "",
+            userPhone: "",
+            userStatus: 0,
+            userTime: "",
+            userShow: "",
+            userBlog: "",
+            userImg: "",
+            userFans: 0,
+            userConcern: 0
+          }
+        }
       ]
     };
   },
   created() {
     this.info = JSON.parse(this.$route.query.detaildata);
+
+    getcomment(this.info.article.artId)
+      .then(res => {
+        this.comments = res.data.content;
+
+        for (let i = 0; i < this.comments.length; i++) {
+          this.comments[i].comment.comTime = this.$moment(
+            this.comments[i].comment.comTime,
+            "YYYY-MM-DD hh:mm:ss"
+          ).fromNow();
+        }
+      })
+      .catch({});
   }
 
-  //需要将传过来的数据存入session中（关闭浏览器才会清除数据）localstage也行，cookies也行，我选择session，不然一刷新数据就会丢失，有空再更新的，//不采用这种方式，vue的router使用query传参，刷新不会丢失数据，登录状态的保存再使用sessionStorge
+  //通过query传参，将参数拼接在地址栏中
 };
 </script>
 
