@@ -84,4 +84,9 @@ export const register = (userName, userPassword, userShow, userEmail, userPhone,
 };
 export const getcomment = (artId) => {
     return axios.post("/getComment", Qs.stringify({ artId }))
+};
+export const newcomment = (comArtId, text, comUserId) => {
+    return axios.post("/postcomment", Qs.stringify({ comArtId, text, comUserId }))
 }
+
+

@@ -38,7 +38,7 @@
                     <td width="10" valign="top"></td>
                     <td width="auto" align="left">
                       <span class="bigger">
-                        <a href="/member/chp3">{{$store.state.user.userName}}</a>
+                        <a href="#">{{$store.state.user.userName}}</a>
                       </span>
                     </td>
                   </tr>
@@ -93,7 +93,7 @@
                     </td>
                     <td width="10"></td>
                     <td width="auto" valign="middle" align="left">
-                      <a href="/new">在此贴发表评论</a>
+                      <!-- <a @click="newcomment">在此贴发表评论</a> -->
                     </td>
                   </tr>
                 </tbody>
@@ -119,7 +119,7 @@
                 <a href="/signup" class="super normal button">现在注册</a>
                 <div class="sep5"></div>
                 <div class="sep10"></div>已注册用户请 &nbsp;
-                <a href="/signin">登录</a>
+                <a @click="login">登录</a>
               </div>
             </div>
           </div>
@@ -169,6 +169,39 @@
             </div>
           </div>
           <div class="sep20"></div>
+          <div class="box" v-show="$store.state.isLogin">
+            <div class="cell">
+              <div class="fr">
+                <a>
+                  <strong>↑</strong> 注意用语规范
+                </a>
+              </div>添加一条新回复
+            </div>
+            <div class="cell">
+              <form>
+                <textarea
+                  v-model="text"
+                  name="content"
+                  maxlength="10000"
+                  class="mll"
+                  id="reply_content"
+                  style="overflow: hidden; overflow-wrap: break-word; resize: none; height: 112px;"
+                ></textarea>
+                <div class="sep10"></div>
+                <div class="fr">
+                  <div class="sep5"></div>
+                  <span class="gray">请尽量让自己的回复能够对别人有帮助</span>
+                </div>
+                <input type="hidden" value="41475" name="once" />
+                <input type="button" value="回复" class="super normal button" @click="newcomment" />
+              </form>
+            </div>
+            <div class="inner">
+              <div class="fr">
+                <a href="#">← CP3</a>
+              </div>&nbsp;
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -200,10 +233,12 @@
 </template>
 
 <script>
+import { newcomment } from "@/api";
 import { getcomment } from "@/api";
 export default {
   data() {
     return {
+      text: "",
       info: [
         {
           article: {
@@ -280,6 +315,23 @@ export default {
         }
       })
       .catch({});
+  },
+  methods: {
+    newcomment() {
+      console.log(this.text);
+      newcomment(
+        this.info.article.artId,
+        this.text,
+        this.$store.state.user.userId
+      )
+        .then(res => {
+          if (res.data === 200) {
+            this.text = "";
+            alert("评论成功"); //后面逻辑需要处理，明天更新
+          }
+        })
+        .catch({});
+    }
   }
 
   //通过query传参，将参数拼接在地址栏中
@@ -287,6 +339,38 @@ export default {
 </script>
 
 <style scoped>
+textarea {
+  -webkit-writing-mode: horizontal-tb !important;
+  text-rendering: auto;
+  color: -internal-light-dark-color(black, white);
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: start;
+  -webkit-appearance: textarea;
+  background-color: -internal-light-dark-color(white, black);
+  -webkit-rtl-ordering: logical;
+  flex-direction: column;
+  resize: auto;
+  cursor: text;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  margin: 0em;
+  font: 400 13.3333px Arial;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(169, 169, 169);
+  border-image: initial;
+  padding: 2px;
+  width: 720px;
+}
+form {
+  display: block;
+  margin-top: 0em;
+}
 #Rightbar {
   width: 270px;
   float: right;
@@ -420,5 +504,8 @@ a:visited {
   color: #778087;
   text-decoration: none;
   word-break: break-word;
+}
+a {
+  color: #000;
 }
 </style>

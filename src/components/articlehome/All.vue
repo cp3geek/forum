@@ -249,4 +249,9 @@ export default {
 .fuck {
   text-align: center;
 }
+.tile.is-ancestor {
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 0;
+}
 </style>

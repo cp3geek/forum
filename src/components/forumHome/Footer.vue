@@ -11,23 +11,18 @@
         >CC BY NC SA 4.0</a>.
       </p>
     </div>
-    {{time}}
   </footer>
 </template>
 
 
 <script>
 // 2019-04-12
+import { test } from "@/api";
 export default {
   data() {
-    return {
-      time: ""
-    };
+    return {};
   },
-  created() {
-    let dateValue = this.$moment(new Date()).format("YYYY-MM-DD hh:mm:ss");
-    this.time = dateValue;
-  }
+  created() {}
 };
 </script>
 
