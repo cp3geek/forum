@@ -4,7 +4,7 @@
 
 目前所用到的技术栈
 
-`springboot`
+`springboot springsecurity`
 
 `vue`
 
@@ -18,7 +18,7 @@
 
 `buefy-ui`
 
-`mysql`
+`mysql` 
 
 后端项目地址：https://github.com/Chp3/universityforum
 
