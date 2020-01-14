@@ -94,6 +94,7 @@
                     <td width="10"></td>
                     <td width="auto" valign="middle" align="left">
                       <!-- <a @click="newcomment">在此贴发表评论</a> -->
+                      <p>占位</p>
                     </td>
                   </tr>
                 </tbody>
@@ -101,7 +102,7 @@
             </div>
             <div class="inner">
               <div class="fr" id="money" style="margin: -3px 0px 0px 0px"></div>
-              <a href="#" class="fade">去发帖</a>
+              <a class="fade" @click="Post">去发帖</a>
             </div>
           </div>
         </div>
@@ -236,6 +237,7 @@
 import { newcomment } from "@/api";
 import { getcomment } from "@/api";
 export default {
+  inject: ["reload"],
   data() {
     return {
       text: "",
@@ -317,6 +319,9 @@ export default {
       .catch({});
   },
   methods: {
+    Post() {
+      this.$router.push("/postarticle");
+    },
     newcomment() {
       console.log(this.text);
       newcomment(
@@ -328,6 +333,7 @@ export default {
           if (res.data === 200) {
             this.text = "";
             alert("评论成功"); //后面逻辑需要处理，明天更新
+            this.reload();
           }
         })
         .catch({});

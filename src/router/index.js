@@ -47,6 +47,11 @@ const routes = [
     name: "Details",
     component: () => import("../components/articlehome/Details")
   },
+  {
+    path: "/postarticle",
+    name: "PostArticle",
+    component: () => import("../components/articlehome/PostArticle")
+  }
 ];
 
 const router = new VueRouter({

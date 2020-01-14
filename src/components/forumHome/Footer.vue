@@ -16,8 +16,6 @@
 
 
 <script>
-// 2019-04-12
-import { test } from "@/api";
 export default {
   data() {
     return {};
