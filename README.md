@@ -39,6 +39,13 @@ Happy New Year
  ![image](src/assets/imgs/2.png)
  ![image](src/assets/imgs/3.png)
  ![image](src/assets/imgs/4.png)
+ ![image](src/assets/imgs/5.png)
+ ![image](src/assets/imgs/6.png)
+ ![image](src/assets/imgs/7.png)
+ ![image](src/assets/imgs/8.png)
+ ![image](src/assets/imgs/9.png)
+ ![image](src/assets/imgs/10.png)
+ ![image](src/assets/imgs/11.png)
 
 ## Project setup
 ```
