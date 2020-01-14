@@ -92,4 +92,8 @@ export const newpost = (userId, title, text, select) => {
     return axios.post("/newpost", Qs.stringify({ userId, title, text, select }))
 }
 
+export const findartbyuserid = (userId) => {
+    return axios.post("/findartbyuserid", Qs.stringify({ userId }))
+}
+
 

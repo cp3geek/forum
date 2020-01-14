@@ -61,7 +61,7 @@
                       align="center"
                     >
                       <a href="#" class="dark" style="display: block;">
-                        <span class="bigger">0</span>
+                        <span class="bigger">{{myartnum}}</span>
                         <div class="sep3"></div>
                         <span class="fade">你的帖子</span>
                       </a>
@@ -236,10 +236,12 @@
 <script>
 import { newcomment } from "@/api";
 import { getcomment } from "@/api";
+import { findartbyuserid } from "@/api";
 export default {
   inject: ["reload"],
   data() {
     return {
+      myartnum: 0,
       text: "",
       info: [
         {
@@ -317,6 +319,11 @@ export default {
         }
       })
       .catch({});
+
+    findartbyuserid(this.$store.state.user.userId).then(res => {
+      console.log(res);
+      this.myartnum = res.data.length;
+    });
   },
   methods: {
     home() {
