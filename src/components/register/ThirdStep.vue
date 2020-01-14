@@ -68,7 +68,7 @@ export default {
         ).then(res => {
           const { data } = res;
           if (data === 200) {
-            this.$router.push("/");
+            this.$router.go(-1);
           }
         });
       }

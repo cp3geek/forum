@@ -9,7 +9,7 @@
                 <td width="570" align="right" style="padding-top: 2px;">
                   <a href="/" class="top">首页</a>&nbsp;&nbsp;&nbsp;
                   <a href="/signup" class="top">注册</a>
-&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;
                 </td>
               </tr>
             </tbody>
@@ -45,7 +45,8 @@
                           autocorrect="off"
                           spellcheck="false"
                           autocapitalize="off"
-                          placeholder="用户名或电子邮箱地址"
+                          placeholder="电子邮箱地址"
+                          v-model="email"
                         />
                       </td>
                     </tr>
@@ -60,6 +61,7 @@
                           autocorrect="off"
                           spellcheck="false"
                           autocapitalize="off"
+                          v-model="password"
                         />
                       </td>
                     </tr>
@@ -68,7 +70,7 @@
                       <td width="120" align="right"></td>
                       <td width="auto" align="left">
                         <input type="hidden" value="62970" name="once" />
-                        <input type="submit" class="super normal button" value="登录" />
+                        <input type="button" class="super normal button" value="登录" @click="login" />
                       </td>
                     </tr>
                     <tr>
@@ -134,7 +136,38 @@
 
 
 <script>
-export default {};
+import { userLogin } from "@/api";
+export default {
+  data() {
+    return {
+      password: "",
+      email: ""
+    };
+  },
+  methods: {
+    login() {
+      userLogin(this.email, this.password)
+        .then(res => {
+          const { data } = res;
+          this.user = data;
+          console.log(data);
+          if (data != null) {
+            this.$store.dispatch("aLogin", {
+              user: data,
+              message: "牛逼",
+              success: () => {
+                console.log("欢迎您");
+              }
+            });
+          } else {
+            alert("该用户不存在");
+          }
+          this.$router.go(-1);
+        })
+        .catch(() => {});
+    }
+  }
+};
 </script>
 
 

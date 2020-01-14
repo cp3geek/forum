@@ -116,10 +116,10 @@
             <div class="inner">
               <div class="sep5"></div>
               <div align="center">
-                <a href="/signup" class="super normal button">现在注册</a>
+                <a href="/registerhome" class="super normal button">现在注册</a>
                 <div class="sep5"></div>
                 <div class="sep10"></div>已注册用户请 &nbsp;
-                <a @click="login">登录</a>
+                <a href="/login">登录</a>
               </div>
             </div>
           </div>

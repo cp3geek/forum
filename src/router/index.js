@@ -27,6 +27,7 @@ const routes = [
   },
   {
     path: "/userhome",
+    meta: { requireAuth: true },
     component: () => import("../components/userhome/UserHome")
   },
   {
@@ -59,5 +60,7 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 });
+
+
 
 export default router;
