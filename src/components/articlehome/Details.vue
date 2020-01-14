@@ -94,7 +94,6 @@
                     <td width="10"></td>
                     <td width="auto" valign="middle" align="left">
                       <!-- <a @click="newcomment">在此贴发表评论</a> -->
-                      <p>占位</p>
                     </td>
                   </tr>
                 </tbody>
