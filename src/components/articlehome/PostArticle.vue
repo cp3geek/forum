@@ -81,6 +81,7 @@
               </div>
               <div class="cell" style="padding: 0px;">
                 <textarea
+                  v-model="title"
                   class="msl"
                   rows="1"
                   maxlength="120"
@@ -95,7 +96,7 @@
               </div>
 
               <form action>
-                <textarea name="post" cols="100" rows="10"></textarea>
+                <textarea name="post" cols="100" rows="10" v-model="text"></textarea>
               </form>
 
               <div class="cell">
@@ -109,12 +110,12 @@
                   aria-hidden="true"
                   v-model="select"
                 >
-                  <option value="lq" data-select2-id="1069">篮球</option>
-                  <option value="zq" data-select2-id="1070">足球</option>
-                  <option value="bxj" data-select2-id="1069">步行街</option>
-                  <option value="tz" data-select2-id="1069">跳蚤市场</option>
-                  <option value="js" data-select2-id="1069">健身区</option>
-                  <option value="xx" data-select2-id="1069">学习专区</option>
+                  <option value="1" data-select2-id="1069">篮球</option>
+                  <option value="2" data-select2-id="1070">足球</option>
+                  <option value="3" data-select2-id="1069">步行街</option>
+                  <option value="4" data-select2-id="1069">跳蚤市场</option>
+                  <option value="5" data-select2-id="1069">健身区</option>
+                  <option value="6" data-select2-id="1069">学习专区</option>
                 </select>
                 <span
                   class="select2 select2-container select2-container--default"
@@ -208,15 +209,26 @@
 
 
 <script>
+import { newpost } from "@/api";
 export default {
   data() {
     return {
-      select: ""
+      select: "",
+      title: "",
+      text: "",
+      userId: ""
     };
   },
   methods: {
     post() {
-      console.log(this.select);
+      this.userId = this.$store.state.user.userId;
+      newpost(this.userId, this.title, this.text, this.select)
+        .then(res => {
+          if (res.data === 200) {
+            this.$router.push("/");
+          }
+        })
+        .catch();
     }
   }
 };

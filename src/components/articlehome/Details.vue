@@ -10,7 +10,7 @@
         </b-navbar-item>
       </template>
       <template slot="start">
-        <b-navbar-item href="#">首页</b-navbar-item>
+        <b-navbar-item href="#" @click="home">首页</b-navbar-item>
       </template>
     </b-navbar>
     <div class="Wrapper">
@@ -319,6 +319,9 @@ export default {
       .catch({});
   },
   methods: {
+    home() {
+      this.$router.push("/");
+    },
     Post() {
       this.$router.push("/postarticle");
     },
@@ -332,7 +335,7 @@ export default {
         .then(res => {
           if (res.data === 200) {
             this.text = "";
-            alert("评论成功"); //后面逻辑需要处理，明天更新
+            alert("评论成功");
             this.reload();
           }
         })

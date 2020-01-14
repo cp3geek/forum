@@ -87,7 +87,9 @@ export const getcomment = (artId) => {
 };
 export const newcomment = (comArtId, text, comUserId) => {
     return axios.post("/postcomment", Qs.stringify({ comArtId, text, comUserId }))
+};
+export const newpost = (userId, title, text, select) => {
+    return axios.post("/newpost", Qs.stringify({ userId, title, text, select }))
 }
-
 
 
