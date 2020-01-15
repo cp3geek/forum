@@ -10,7 +10,7 @@
       <el-container>
         <el-main>
           <div>
-            <Main />
+            <router-view></router-view>
           </div>
         </el-main>
         <el-footer>
@@ -26,7 +26,7 @@
 <script>
 import Header from "../backstagehome/Header.vue";
 import Sidebar from "../backstagehome/Sidebar.vue";
-import Main from "../backstagehome/main.vue";
+
 import Footer from "../backstagehome/Footer.vue";
 
 export default {
@@ -38,7 +38,7 @@ export default {
   components: {
     Header,
     Sidebar,
-    Main,
+
     Footer
   }
 };

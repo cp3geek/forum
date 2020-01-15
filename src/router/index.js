@@ -23,7 +23,24 @@ const routes = [
 
   {
     path: "/backstagehome",
-    component: () => import("../components/backstagehome/BackStageHome.vue")
+    component: () => import("../components/backstagehome/BackStageHome.vue"),
+    children: [
+      {
+        path: "/usermanger",
+        name: "usermanger",
+        component: () => import("../components/backstagehome/UserManger.vue")
+      },
+      {
+        path: "/articlemanger",
+        name: "articlemanger",
+        component: () => import("../components/backstagehome/ArticleManger.vue")
+      },
+      {
+        path: "/typemanger",
+        name: "typemanger",
+        component: () => import("../components/backstagehome/TypeManger.vue")
+      }
+    ]
   },
   {
     path: "/userhome",
@@ -53,6 +70,7 @@ const routes = [
     name: "PostArticle",
     component: () => import("../components/articlehome/PostArticle")
   }
+  ,
 ];
 
 const router = new VueRouter({
