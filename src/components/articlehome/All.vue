@@ -102,7 +102,7 @@
             </div>
           </div>
           <footer class="card-footer">
-            <a href="#" class="card-footer-item">进入板块分区</a>
+            <a href="#" class="card-footer-item">点击你感兴趣的板块</a>
           </footer>
         </div>
       </article>

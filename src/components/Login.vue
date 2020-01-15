@@ -154,7 +154,7 @@ export default {
           if (data != null) {
             this.$store.dispatch("aLogin", {
               user: data,
-              message: "牛逼",
+              message: "",
               success: () => {
                 console.log("欢迎您");
               }

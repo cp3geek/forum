@@ -72,12 +72,12 @@
           <div class="sep20"></div>
           <div class="box" id="box">
             <div class="cell">
-              <a href="/">V2EX</a>
-              <span class="chevron">&nbsp;›&nbsp;</span> 创作新主题
+              <a href="/">{{$store.state.user.userName}}</a>
+              <span class="chevron">&nbsp;›&nbsp;</span> 发表新帖
             </div>
             <form method="post" action="/new" id="compose">
               <div class="cell">
-                <div class="fr fade" id="title_remaining">120</div>主题标题
+                <div class="fr fade" id="title_remaining">120</div>帖子标题
               </div>
               <div class="cell" style="padding: 0px;">
                 <textarea
@@ -88,7 +88,7 @@
                   id="topic_title"
                   name="title"
                   autofocus="autofocus"
-                  placeholder="请输入主题标题，如果标题能够表达完整内容，则正文可以为空"
+                  placeholder="请输入帖子标题，如果标题能够表达完整内容，则正文可以为空"
                 ></textarea>
               </div>
               <div class="cell">

@@ -4,9 +4,6 @@
       <article class="tile is-child box">
         <p class="subtitle">热门板块</p>
 
-        <p align="right">
-          <b-button type="button is-info" outlined>全部板块</b-button>
-        </p>
         <b-carousel>
           <b-carousel-item v-for="(content, index) in contents" :key="index">
             <section>
