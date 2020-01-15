@@ -96,4 +96,8 @@ export const findartbyuserid = (userId) => {
     return axios.post("/findartbyuserid", Qs.stringify({ userId }))
 }
 
+export const getuserlist = () => {
+    return axios.post("/getuserlist")
+}
+
 
