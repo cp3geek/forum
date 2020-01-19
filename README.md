@@ -50,17 +50,17 @@ Happy New Year
  ![image](src/assets/imgs/10.png)
  ![image](src/assets/imgs/11.png)
 
-## Project setup
+## Project setup（安装依赖）
 ```
 yarn install或者npm install
 ```
 
-### Compiles and hot-reloads for development
+### Compiles and hot-reloads for development（启动项目）
 ```
 yarn serve 或者npm run serve
 ```
 
-### Compiles and minifies for production
+### Compiles and minifies for production（打包）
 ```
 yarn run build 或者npm run build
 ```
