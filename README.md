@@ -24,7 +24,7 @@
 
 后端项目地址：https://github.com/Chp3/universityforum
 
-后台项目跑起来再运行前端项目，不然获取不到数据
+后台项目跑起来再运行前端项目，不然获取不到数据，配置文件中更改数据库信息
 
 Happy New Year
 考试周停更一周
