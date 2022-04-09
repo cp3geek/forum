@@ -13,7 +13,7 @@
     "buefy": "^0.8.8",
     "element-ui": "^2.13.0",
     "font-awesome": "^4.7.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "vue": "^2.6.10",
     "vue-axios": "^2.1.5",
     "vue-infinite-scroll": "^2.0.2",
