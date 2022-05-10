@@ -50,7 +50,7 @@ yarn install或者npm install
 
 ### Compiles and hot-reloads for development（启动项目）
 ```
-yarn serve 或者npm run serve
+yarn run dev 或者npm run dev
 ```
 
 ### Compiles and minifies for production（打包）
