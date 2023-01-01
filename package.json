@@ -21,9 +21,9 @@
     "vuex": "^3.0.1"
   },
   "devDependencies": {
-    "@vue/cli-plugin-eslint": "^4.0.0",
-    "@vue/cli-plugin-unit-jest": "^4.0.0",
-    "@vue/cli-service": "^4.0.0",
+    "@vue/cli-plugin-eslint": "^5.0.8",
+    "@vue/cli-plugin-unit-jest": "^5.0.8",
+    "@vue/cli-service": "^5.0.8",
     "@vue/eslint-config-prettier": "^5.0.0",
     "@vue/test-utils": "1.0.0-beta.29",
     "babel-eslint": "^10.0.3",
@@ -31,7 +31,7 @@
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-vue": "^5.0.0",
     "less": "^3.0.4",
-    "less-loader": "^5.0.0",
+    "less-loader": "^11.1.0",
     "prettier": "^1.18.2",
     "vue-template-compiler": "^2.6.10"
   }
